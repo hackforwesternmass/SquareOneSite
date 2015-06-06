@@ -1,0 +1,4 @@
+<h2>List of Providers</h2>
+<% for i in 1..Provider.count do %>
+    <p><%= Provider.find(i).fName + " " + Provider.find(i).lName %></p>
+<% end %>
