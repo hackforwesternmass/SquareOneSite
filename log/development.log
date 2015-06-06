@@ -2623,3 +2623,336 @@ ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x00
   Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
   Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
   Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (49.7ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:13:18 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (23.3ms)
+  Rendered children/new.html.erb within layouts/application (24.2ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2fdcad5e0>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_48569820'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_48823100'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (33.8ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (59.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (42.3ms)
+
+
+Started GET "/providers/1/children" for ::1 at 2015-06-06 19:15:19 -0400
+Processing by ChildrenController#index as HTML
+  Parameters: {"provider_id"=>"1"}
+  [1m[35mChild Load (0.2ms)[0m  SELECT "children".* FROM "children"
+  Rendered children/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 67ms (Views: 66.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:15:21 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (21.3ms)
+  Rendered children/new.html.erb within layouts/application (22.4ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2f90f9fb8>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_51097580'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_51219080'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (13.8ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (29.7ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:15:21 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (12.3ms)
+  Rendered children/new.html.erb within layouts/application (13.0ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2f8ed3f68>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_48569820'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_48823100'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.2ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (32.1ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:18:28 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (13.6ms)
+  Rendered children/new.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2f827a140>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_48569820'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_70306401339060'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.9ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.6ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:18:54 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (16.7ms)
+  Rendered children/new.html.erb within layouts/application (17.6ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2f8033788>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_48569820'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_70306401339060'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.7ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:20:38 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (14.9ms)
+  Rendered children/new.html.erb within layouts/application (15.8ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `children_path' for #<#<Class:0x007fe2f9123a70>:0x007fe2fd640040>):
+    1: <%= form_for(@child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_48569820'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_70306401339060'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (15.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (31.2ms)
+
+
+Started POST "/providers/1/children/console/repl_sessions/a6f46a26a7e55d80e8492adc49893ddd/trace" for ::1 at 2015-06-06 19:21:08 -0400
+
+
+Started PUT "/providers/1/children/console/repl_sessions/a6f46a26a7e55d80e8492adc49893ddd" for ::1 at 2015-06-06 19:22:04 -0400
+
+
+Started PUT "/providers/1/children/console/repl_sessions/a6f46a26a7e55d80e8492adc49893ddd" for ::1 at 2015-06-06 19:22:10 -0400
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:29:56 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (7.9ms)
+  Rendered children/new.html.erb within layouts/application (8.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+ActionView::Template::Error (can't write unknown attribute `html`):
+    1: <%= form_for(@child.provider, @child) do |f| %>
+    2:   <% if @child.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+  app/views/children/_form.html.erb:1:in `_app_views_children__form_html_erb___4585686109186837715_18640140'
+  app/views/children/new.html.erb:3:in `_app_views_children_new_html_erb__2005334437130572467_70306401339060'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.7ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (16.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (34.7ms)
+
+
+Started GET "/providers/1/children/new" for ::1 at 2015-06-06 19:39:34 -0400
+Processing by ChildrenController#new as HTML
+  Parameters: {"provider_id"=>"1"}
+  Rendered children/_form.html.erb (10.4ms)
+  Rendered children/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 80ms (Views: 78.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/attendances.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/children.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/providers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/application.self-e4fb85baaf5effd13c7bfe416e18bb6da4b0296c514a471456cf3a84ea1fab78.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/scaffolds.self-a149a0b058b7c2a54df73c8ac276ff1817a3781bc3b6e4753ad823520af90144.css?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/attendances.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/providers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/children.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-06 19:39:34 -0400
+
+
+Started POST "/providers/1/children" for ::1 at 2015-06-06 19:40:37 -0400
+Processing by ChildrenController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/8m2Hg+/mA9BzJgGblSZP/eH+VivDT22tjX6LXwZzwfjsz93hW6afQ4z9j4vdxbqy/p9TiknhRMPXZagbgVrqA==", "child"=>{"fName"=>"Dingus", "middle"=>"H", "lName"=>"McGee", "dob(1i)"=>"2014", "dob(2i)"=>"6", "dob(3i)"=>"6", "fundSrc"=>"The Swag Foundation", "trans"=>"2", "startDate(1i)"=>"2012", "startDate(2i)"=>"6", "startDate(3i)"=>"6", "provider_id"=>"1"}, "commit"=>"Create Child", "provider_id"=>"1"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "children" ("fName", "middle", "lName", "fundSrc", "trans", "provider_id", "dob", "startDate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["fName", "Dingus"], ["middle", "H"], ["lName", "McGee"], ["fundSrc", "The Swag Foundation"], ["trans", 2], ["provider_id", 1], ["dob", "2014-06-06"], ["startDate", "2012-06-06"], ["created_at", "2015-06-06 23:40:37.212226"], ["updated_at", "2015-06-06 23:40:37.212226"]]
+  [1m[36m (367.7ms)[0m  [1mcommit transaction[0m
+Redirected to 
+Completed 500 Internal Server Error in 386ms (ActiveRecord: 368.2ms)
+
+NoMethodError (undefined method `child_url' for #<ChildrenController:0x007fe2e4063eb0>):
+  app/controllers/children_controller.rb:34:in `block (2 levels) in create'
+  app/controllers/children_controller.rb:32:in `create'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.1ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (16.0ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (33.2ms)
+
+
+Started POST "/providers/1/children" for ::1 at 2015-06-06 19:41:26 -0400
+Processing by ChildrenController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/8m2Hg+/mA9BzJgGblSZP/eH+VivDT22tjX6LXwZzwfjsz93hW6afQ4z9j4vdxbqy/p9TiknhRMPXZagbgVrqA==", "child"=>{"fName"=>"Dingus", "middle"=>"H", "lName"=>"McGee", "dob(1i)"=>"2014", "dob(2i)"=>"6", "dob(3i)"=>"6", "fundSrc"=>"The Swag Foundation", "trans"=>"2", "startDate(1i)"=>"2012", "startDate(2i)"=>"6", "startDate(3i)"=>"6", "provider_id"=>"1"}, "commit"=>"Create Child", "provider_id"=>"1"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "children" ("fName", "middle", "lName", "fundSrc", "trans", "provider_id", "dob", "startDate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["fName", "Dingus"], ["middle", "H"], ["lName", "McGee"], ["fundSrc", "The Swag Foundation"], ["trans", 2], ["provider_id", 1], ["dob", "2014-06-06"], ["startDate", "2012-06-06"], ["created_at", "2015-06-06 23:41:26.887743"], ["updated_at", "2015-06-06 23:41:26.887743"]]
+  [1m[35m (144.3ms)[0m  commit transaction
+Redirected to 
+Completed 500 Internal Server Error in 163ms (ActiveRecord: 144.8ms)
+
+NoMethodError (undefined method `child_url' for #<ChildrenController:0x007fe2ec0166f8>):
+  app/controllers/children_controller.rb:34:in `block (2 levels) in create'
+  app/controllers/children_controller.rb:32:in `create'
+
+
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.6ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (14.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/jesse/.rvm/gems/ruby-2.1.2@railstutorial_rails_4_0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.4ms)

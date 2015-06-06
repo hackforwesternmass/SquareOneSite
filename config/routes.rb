@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#index'
 
-
+  resources :static_pages
   resources :providers do
     resources :children do
       resources :attendances 
     end
   end
   
-
   get 'static_pages/index'
 
-
-  resources :static_pages
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-   root 'static_pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
