@@ -1,0 +1,61 @@
+<%= form_for(@attendance) do |f| %>
+  <% if @attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+
+      <ul>
+      <% @attendance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :child_id %><br>
+    <%= f.text_field :child_id %>
+  </div>
+  <div class="field">
+    <%= f.label :provider_id %><br>
+    <%= f.text_field :provider_id %>
+  </div>
+  <div class="field">
+    <%= f.label :childTermDate %><br>
+    <%= f.date_select :childTermDate %>
+  </div>
+  <div class="field">
+    <%= f.label :dateOfService %><br>
+    <%= f.date_select :dateOfService %>
+  </div>
+  <div class="field">
+    <%= f.label :timeIn %><br>
+    <%= f.datetime_select :timeIn %>
+  </div>
+  <div class="field">
+    <%= f.label :timeOut %><br>
+    <%= f.datetime_select :timeOut %>
+  </div>
+  <div class="field">
+    <%= f.label :absent %><br>
+    <%= f.text_field :absent %>
+  </div>
+  <div class="field">
+    <%= f.label :whoCreated %><br>
+    <%= f.text_field :whoCreated %>
+  </div>
+  <div class="field">
+    <%= f.label :dateCreated %><br>
+    <%= f.date_select :dateCreated %>
+  </div>
+  <div class="field">
+    <%= f.label :whoEdited %><br>
+    <%= f.text_field :whoEdited %>
+  </div>
+  <div class="field">
+    <%= f.label :dateEdited %><br>
+    <%= f.date_select :dateEdited %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

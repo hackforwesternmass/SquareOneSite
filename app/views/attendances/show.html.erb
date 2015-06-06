@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @attendance.child %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @attendance.provider %>
+</p>
+
+<p>
+  <strong>Childtermdate:</strong>
+  <%= @attendance.childTermDate %>
+</p>
+
+<p>
+  <strong>Dateofservice:</strong>
+  <%= @attendance.dateOfService %>
+</p>
+
+<p>
+  <strong>Timein:</strong>
+  <%= @attendance.timeIn %>
+</p>
+
+<p>
+  <strong>Timeout:</strong>
+  <%= @attendance.timeOut %>
+</p>
+
+<p>
+  <strong>Absent:</strong>
+  <%= @attendance.absent %>
+</p>
+
+<p>
+  <strong>Whocreated:</strong>
+  <%= @attendance.whoCreated %>
+</p>
+
+<p>
+  <strong>Datecreated:</strong>
+  <%= @attendance.dateCreated %>
+</p>
+
+<p>
+  <strong>Whoedited:</strong>
+  <%= @attendance.whoEdited %>
+</p>
+
+<p>
+  <strong>Dateedited:</strong>
+  <%= @attendance.dateEdited %>
+</p>
+
+<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
+<%= link_to 'Back', attendances_path %>

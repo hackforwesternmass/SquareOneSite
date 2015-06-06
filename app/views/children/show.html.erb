@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @child.fName %>
+</p>
+
+<p>
+  <strong>Middle:</strong>
+  <%= @child.middle %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @child.lName %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @child.dob %>
+</p>
+
+<p>
+  <strong>Fundsrc:</strong>
+  <%= @child.fundSrc %>
+</p>
+
+<p>
+  <strong>Trans:</strong>
+  <%= @child.trans %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @child.startDate %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @child.provider %>
+</p>
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_id: 
+  provider_id: 
+  childTermDate: 2015-06-06
+  dateOfService: 2015-06-06
+  timeIn: 2015-06-06 12:57:08
+  timeOut: 2015-06-06 12:57:08
+  absent: MyString
+  whoCreated: MyString
+  dateCreated: 2015-06-06
+  whoEdited: MyString
+  dateEdited: 2015-06-06
+
+two:
+  child_id: 
+  provider_id: 
+  childTermDate: 2015-06-06
+  dateOfService: 2015-06-06
+  timeIn: 2015-06-06 12:57:08
+  timeOut: 2015-06-06 12:57:08
+  absent: MyString
+  whoCreated: MyString
+  dateCreated: 2015-06-06
+  whoEdited: MyString
+  dateEdited: 2015-06-06

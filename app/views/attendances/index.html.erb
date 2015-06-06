@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attendances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Child</th>
+      <th>Provider</th>
+      <th>Childtermdate</th>
+      <th>Dateofservice</th>
+      <th>Timein</th>
+      <th>Timeout</th>
+      <th>Absent</th>
+      <th>Whocreated</th>
+      <th>Datecreated</th>
+      <th>Whoedited</th>
+      <th>Dateedited</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.child %></td>
+        <td><%= attendance.provider %></td>
+        <td><%= attendance.childTermDate %></td>
+        <td><%= attendance.dateOfService %></td>
+        <td><%= attendance.timeIn %></td>
+        <td><%= attendance.timeOut %></td>
+        <td><%= attendance.absent %></td>
+        <td><%= attendance.whoCreated %></td>
+        <td><%= attendance.dateCreated %></td>
+        <td><%= attendance.whoEdited %></td>
+        <td><%= attendance.dateEdited %></td>
+        <td><%= link_to 'Show', attendance %></td>
+        <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
+        <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attendance', new_attendance_path %>

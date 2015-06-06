@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fName: MyString
+  middle: MyString
+  lName: MyString
+  addr1: MyString
+  addr2: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  phone: MyString
+  email: MyString
+  licenseCap: 1
+  sqOneCap: 1
+  licenseExpDate: 2015-06-06
+  certLevel: MyString
+  sqOneRepl: false
+
+two:
+  fName: MyString
+  middle: MyString
+  lName: MyString
+  addr1: MyString
+  addr2: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  phone: MyString
+  email: MyString
+  licenseCap: 1
+  sqOneCap: 1
+  licenseExpDate: 2015-06-06
+  certLevel: MyString
+  sqOneRepl: false

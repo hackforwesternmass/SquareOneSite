@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Providers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Middle</th>
+      <th>Lname</th>
+      <th>Addr1</th>
+      <th>Addr2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Licensecap</th>
+      <th>Sqonecap</th>
+      <th>Licenseexpdate</th>
+      <th>Certlevel</th>
+      <th>Sqonerepl</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.fName %></td>
+        <td><%= provider.middle %></td>
+        <td><%= provider.lName %></td>
+        <td><%= provider.addr1 %></td>
+        <td><%= provider.addr2 %></td>
+        <td><%= provider.city %></td>
+        <td><%= provider.state %></td>
+        <td><%= provider.zip %></td>
+        <td><%= provider.phone %></td>
+        <td><%= provider.email %></td>
+        <td><%= provider.licenseCap %></td>
+        <td><%= provider.sqOneCap %></td>
+        <td><%= provider.licenseExpDate %></td>
+        <td><%= provider.certLevel %></td>
+        <td><%= provider.sqOneRepl %></td>
+        <td><%= link_to 'Show', provider %></td>
+        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
+        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Provider', new_provider_path %>
