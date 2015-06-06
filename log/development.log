@@ -1,0 +1,647 @@
+
+
+Started GET "/" for 128.119.73.10 at 2015-06-06 19:13:58 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.1) lib/active_record/migration.rb:393:in `check_pending!'
+  activerecord (4.2.1) lib/active_record/migration.rb:374:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (150.7ms)
+  [1m[36m (19.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (7.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateProviders (20150606165624)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "providers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fName" varchar, "middle" varchar, "lName" varchar, "addr1" varchar, "addr2" varchar, "city" varchar, "state" varchar, "zip" integer, "phone" varchar, "email" varchar, "licenseCap" integer, "sqOneCap" integer, "licenseExpDate" date, "certLevel" varchar, "sqOneRepl" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150606165624"]]
+  [1m[35m (7.0ms)[0m  commit transaction
+Migrating to CreateChildren (20150606165642)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "children" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fName" varchar, "middle" varchar, "lName" varchar, "dob" date, "fundSrc" varchar, "trans" integer, "startDate" date, "provider_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_children_on_provider_id" ON "children" ("provider_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150606165642"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAttendances (20150606165708)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "attendances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "child_id" integer, "provider_id" integer, "childTermDate" date, "dateOfService" date, "timeIn" datetime, "timeOut" datetime, "absent" varchar, "whoCreated" varchar, "dateCreated" date, "whoEdited" varchar, "dateEdited" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_attendances_on_child_id" ON "attendances" ("child_id")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_attendances_on_child_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_attendances_on_child_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_attendances_on_provider_id" ON "attendances" ("provider_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150606165708"]]
+  [1m[35m (8.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_attendances_on_provider_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_attendances_on_provider_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_attendances_on_child_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_attendances_on_child_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_children_on_provider_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_children_on_provider_id' AND type='index'
+
+
+
+Started GET "/" for 128.119.73.10 at 2015-06-06 19:16:44 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/railties-4.2.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:16:51 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.3ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 1280ms (Views: 1276.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/attendances.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/children.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-ade00adcde1249df4241695c2aae67a1990b158fa2c1ae5aedad5425292b1a62.css?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/providers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/children.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/attendances.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/providers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 128.119.73.10 at 2015-06-06 19:16:52 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:29:01 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 116ms (Views: 115.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/images/squareonlogo.png" for 128.119.73.10 at 2015-06-06 19:29:02 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/images/squareonlogo.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.5ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:31:59 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/app/assets/images/squareonlogo.png" for 128.119.73.10 at 2015-06-06 19:31:59 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/providers/app/assets/images/squareonlogo.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (34.4ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:32:21 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 42ms (Views: 41.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/app/assets/images/squareonlogo.png" for 128.119.73.10 at 2015-06-06 19:32:21 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/app/assets/images/squareonlogo.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (30.5ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:33:14 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 93ms (Views: 92.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:33:17 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:38:43 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.3ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 68ms (Views: 66.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self-d46d273fe2c4725c97ae6669ece7775f279af30f6fc88427a617c03ef02480cd.css?body=1" for 128.119.73.10 at 2015-06-06 19:38:43 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:38:47 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 35ms (Views: 34.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:38:59 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 59ms (Views: 58.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self-3dff8bf771e5fc561b59755865fdcb1bc418df8e73e38f2ca096a5280bd93dd9.css?body=1" for 128.119.73.10 at 2015-06-06 19:38:59 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:41:07 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.3ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 52ms (Views: 51.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:42:53 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 56ms (Views: 55.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self-954363e98575a1bba2011e83f9266772a2466a1ca16a0b6014eac82ddef5c727.css?body=1" for 128.119.73.10 at 2015-06-06 19:42:53 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:43:12 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.3ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 48ms (Views: 46.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:43:42 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 54ms (Views: 53.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.self-e4fb85baaf5effd13c7bfe416e18bb6da4b0296c514a471456cf3a84ea1fab78.css?body=1" for 128.119.73.10 at 2015-06-06 19:43:42 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/children." for 128.119.73.10 at 2015-06-06 19:54:19 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/children."):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.2ms)
+
+
+Started GET "/children" for 128.119.73.10 at 2015-06-06 19:54:22 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[36mChild Load (0.2ms)[0m  [1mSELECT "children".* FROM "children"[0m
+  Rendered children/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 48ms (Views: 43.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/children" for 128.119.73.10 at 2015-06-06 19:56:49 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[35mChild Load (0.2ms)[0m  SELECT "children".* FROM "children"
+  Rendered children/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/provider" for 128.119.73.10 at 2015-06-06 19:57:07 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+ActionController::RoutingError (No route matches [GET] "/provider"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:29:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (41.0ms)
+
+
+Started GET "/providers" for 128.119.73.10 at 2015-06-06 19:57:10 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT "providers".* FROM "providers"[0m
+  Rendered providers/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/new" for 128.119.73.10 at 2015-06-06 19:57:12 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#new as HTML
+  Rendered providers/_form.html.erb (28.0ms)
+  Rendered providers/new.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 88ms (Views: 71.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/providers" for 128.119.73.10 at 2015-06-06 19:57:27 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BbuDa1llvSqbkH8aNWLp5H2XbjQXuAUCrLGHkT+jlf/vMNhYFzmb4s5tQ03mj3CiwVhNkgs5VfB2L6QXG41kZg==", "provider"=>{"fName"=>"Test", "middle"=>"", "lName"=>"Testing", "addr1"=>"", "addr2"=>"", "city"=>"", "state"=>"", "zip"=>"", "phone"=>"", "email"=>"", "licenseCap"=>"", "sqOneCap"=>"", "licenseExpDate(1i)"=>"2015", "licenseExpDate(2i)"=>"6", "licenseExpDate(3i)"=>"6", "certLevel"=>"", "sqOneRepl"=>"0"}, "commit"=>"Create Provider"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "providers" ("fName", "middle", "lName", "addr1", "addr2", "city", "state", "phone", "email", "certLevel", "sqOneRepl", "licenseExpDate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["fName", "Test"], ["middle", ""], ["lName", "Testing"], ["addr1", ""], ["addr2", ""], ["city", ""], ["state", ""], ["phone", ""], ["email", ""], ["certLevel", ""], ["sqOneRepl", "f"], ["licenseExpDate", "2015-06-06"], ["created_at", "2015-06-06 19:57:27.574229"], ["updated_at", "2015-06-06 19:57:27.574229"]]
+  [1m[35m (14.8ms)[0m  commit transaction
+Redirected to https://squareonesite-hoffmanb.c9.io/providers/1
+Completed 302 Found in 25ms (ActiveRecord: 15.4ms)
+
+
+Started GET "/providers/1" for 128.119.73.10 at 2015-06-06 19:57:27 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProvider Load (0.4ms)[0m  [1mSELECT  "providers".* FROM "providers" WHERE "providers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered providers/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 54ms (Views: 43.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/providers" for 128.119.73.10 at 2015-06-06 19:57:41 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers/1" for 128.119.73.10 at 2015-06-06 19:57:45 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProvider Load (0.2ms)[0m  [1mSELECT  "providers".* FROM "providers" WHERE "providers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered providers/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 46ms (Views: 44.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/providers" for 128.119.73.10 at 2015-06-06 19:57:51 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.2ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 56ms (Views: 54.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/children" for 128.119.73.10 at 2015-06-06 19:57:56 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[36mChild Load (0.2ms)[0m  [1mSELECT "children".* FROM "children"[0m
+  Rendered children/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 37ms (Views: 36.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/children/new" for 128.119.73.10 at 2015-06-06 19:57:59 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#new as HTML
+  Rendered children/_form.html.erb (8.7ms)
+  Rendered children/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 75ms (Views: 69.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/children" for 128.119.73.10 at 2015-06-06 19:58:08 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DPy4LTdHfQdtQFC9QxUN8H1Tt/F1m44C5BJT/ijIVE7md+MeeRtbzzi9bOqQ+JS2wZyUV2ka3vA+jHB4DOal1w==", "child"=>{"fName"=>"Test", "middle"=>"", "lName"=>"Child", "dob(1i)"=>"2015", "dob(2i)"=>"6", "dob(3i)"=>"6", "fundSrc"=>"", "trans"=>"", "startDate(1i)"=>"2015", "startDate(2i)"=>"6", "startDate(3i)"=>"6", "provider_id"=>""}, "commit"=>"Create Child"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "children" ("fName", "middle", "lName", "fundSrc", "dob", "startDate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["fName", "Test"], ["middle", ""], ["lName", "Child"], ["fundSrc", ""], ["dob", "2015-06-06"], ["startDate", "2015-06-06"], ["created_at", "2015-06-06 19:58:08.344229"], ["updated_at", "2015-06-06 19:58:08.344229"]]
+  [1m[35m (8.8ms)[0m  commit transaction
+Redirected to https://squareonesite-hoffmanb.c9.io/children/1
+Completed 302 Found in 13ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/children/1" for 128.119.73.10 at 2015-06-06 19:58:08 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mChild Load (0.2ms)[0m  [1mSELECT  "children".* FROM "children" WHERE "children"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered children/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/children" for 128.119.73.10 at 2015-06-06 19:58:12 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[35mChild Load (0.2ms)[0m  SELECT "children".* FROM "children"
+  Rendered children/index.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    19:   <tbody>
+    20:     <% @children.each do |child| %>
+    21:       <tr>
+    22:         <td><%= child.fName child.middle child.lName %></td>
+    23:         
+    24:         <td><%= child.dob %></td>
+    25:         <td><%= child.fundSrc %></td>
+  app/views/children/index.html.erb:22:in `block in _app_views_children_index_html_erb___510140812351107103_70136793810200'
+  app/views/children/index.html.erb:20:in `_app_views_children_index_html_erb___510140812351107103_70136793810200'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.3ms)
+
+
+Started GET "/children" for 128.119.73.10 at 2015-06-06 19:58:12 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[36mChild Load (0.2ms)[0m  [1mSELECT "children".* FROM "children"[0m
+  Rendered children/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    19:   <tbody>
+    20:     <% @children.each do |child| %>
+    21:       <tr>
+    22:         <td><%= child.fName child.middle child.lName %></td>
+    23:         
+    24:         <td><%= child.dob %></td>
+    25:         <td><%= child.fundSrc %></td>
+  app/views/children/index.html.erb:22:in `block in _app_views_children_index_html_erb___510140812351107103_70136800951060'
+  app/views/children/index.html.erb:20:in `_app_views_children_index_html_erb___510140812351107103_70136800951060'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.1.5@rails4/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.6ms)
+
+
+Started GET "/providers/" for 128.119.73.10 at 2015-06-06 19:58:27 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ProvidersController#index as HTML
+  [1m[35mProvider Load (0.3ms)[0m  SELECT "providers".* FROM "providers"
+  Rendered providers/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/children/" for 128.119.73.10 at 2015-06-06 20:01:33 +0000
+Cannot render console from 128.119.73.10! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ChildrenController#index as HTML
+  [1m[36mChild Load (0.7ms)[0m  [1mSELECT "children".* FROM "children"[0m
+  Rendered children/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 71ms (Views: 66.2ms | ActiveRecord: 1.3ms)

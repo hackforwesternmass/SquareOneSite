@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SquareOneSite</title>
+  <title>Square One Attendance</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="container">
+    <div class="header">
+<h2><img src="http://www.startatsquareone.org/sites/all/themes/so_tweme/logo.png"/>
+Report Attendance</h2>
+</div>
 <%= yield %>
-
+</div>
 </body>
 </html>
