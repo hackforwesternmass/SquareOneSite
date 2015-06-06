@@ -1,37 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Fname:</strong>
-  <%= @child.fName %>
+  <strong>Name:</strong>
+  <%= @child.fName %>  <%= @child.middle %>  <%= @child.lName %>
 </p>
 
-<p>
-  <strong>Middle:</strong>
-  <%= @child.middle %>
-</p>
+
+
+
 
 <p>
-  <strong>Lname:</strong>
-  <%= @child.lName %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
+  <strong>Date of Birth:</strong>
   <%= @child.dob %>
 </p>
 
 <p>
-  <strong>Fundsrc:</strong>
+  <strong>Funding source:</strong>
   <%= @child.fundSrc %>
 </p>
 
 <p>
-  <strong>Trans:</strong>
+  <strong>Transportation:</strong>
   <%= @child.trans %>
 </p>
 
 <p>
-  <strong>Startdate:</strong>
+  <strong>Start Date:</strong>
   <%= @child.startDate %>
 </p>
 
@@ -40,5 +34,17 @@
   <%= @child.provider %>
 </p>
 
-<%= link_to 'Edit', edit_child_path(@child) %> |
-<%= link_to 'Back', children_path %>
+<strong>Attendance Record:</strong>
+
+<table border>
+<tr><th>Day</th><th>Time In</th><th>Time Out</th><th>Absent</th></tr>
+<% @child.attendances.each do |a| %>
+ <tr> <td>  <%= a.dateOfService %>  </td> <td> <%= a.timeIn %> </td> <td> <%= a.timeOut %> </td>
+</tr>
+
+ 
+  <% end %>
+</table>
+
+<!-- link_to 'Edit', edit_child_path(@child) %> | -->
+<%= link_to 'Back', provider_children_path  %>

@@ -15,6 +15,8 @@ class AttendancesController < ApplicationController
   # GET /attendances/new
   def new
     @attendance = Attendance.new
+    @attendance.timeIn = "0"
+    @attendance.timeOut = "0"
   end
 
   # GET /attendances/1/edit
