@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
   end
 
   # GET /children/1/edit
-  def edit
+  def editchild
   end
 
   # POST /children

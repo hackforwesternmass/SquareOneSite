@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   resources :providers do
     resources :children do
-        resources :attendances 
+      resources :attendances 
+    end
   end
-end
   
 
   get 'static_pages/index'

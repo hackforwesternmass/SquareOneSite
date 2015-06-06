@@ -5,8 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use bcrypt for secure passwords
-gem 'bcrypt'
+gem 'byebug'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
