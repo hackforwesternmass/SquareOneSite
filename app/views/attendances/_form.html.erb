@@ -11,13 +11,26 @@
     </div>
   <% end %>
 
+  <% absence_reasons = ["1 - Present", "A - Unexcused", "E1 - Child on Vacation", "E2 - Mom in Hospital", "E3 - Child in Hospital", "E4 - Child Sick (not hospitalized)", "E5 - Child in Subcare", "E6 - Parent Refused Subcare", "E7 - Intervention", "E8 - Child Doctor Appointment", "C1 - Holiday Closure", "C2 - No Square One Transportation", "C3 - Weather Closure", "C4 - Provider on Holiday", "C5 - Professional Day"] %>
+
+  <% children_list = [] %>
+  <% for i in Child.all do %>
+    <% children_list.push(i.fName + " " + i.lName) %>
+  <% end %>
+
+
+  <% provider_list = [] %>
+  <% for i in Provider.all do %>
+    <% provider_list.push(i.fName + " " + i.lName) %>
+  <% end %>
+
   <div class="field">
     <%= f.label :child_id %><br>
-    <%= f.text_field :child_id %>
+    <%= f.select :child_id, options_for_select(children_list) %>
   </div>
   <div class="field">
     <%= f.label :provider_id %><br>
-    <%= f.text_field :provider_id %>
+    <%= f.select :provider_id, options_for_select(provider_list) %>
   </div>
   <div class="field">
     <%= f.label :childTermDate %><br>
@@ -37,7 +50,7 @@
   </div>
   <div class="field">
     <%= f.label :absent %><br>
-    <%= f.text_field :absent %>
+    <%= f.select :absent, options_for_select(absence_reasons) %>
   </div>
   <div class="field">
     <%= f.label :whoCreated %><br>
