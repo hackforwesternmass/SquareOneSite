@@ -33,16 +33,18 @@
   <strong>Provider:</strong>
   <%= @child.provider.lName %>
 </p>
-<p><%= link_to 'Edit Child Info', edit_provider_child_path(@child.provider, @child) %> 
+
 <p>
   
 <strong>Attendance Record:</strong>
 
 <table border>
-<tr><th>Day</th><th>Time In</th><th>Time Out</th><th>Absent</th></tr>
+<tr><th>Day</th><th>Time In</th><th>Time Out</th><th>Absent</th><th></th></tr>
 
 <% @child.attendances.each do |a| %>
- <tr> <td>  <%= a.dateOfService.to_s(:date) %>  </td> <td> <%= a.timeIn.to_s(:time) %> </td> <td> <%= a.timeOut.to_s(:time) %> </td>
+ <tr> <td>  <%= a.dateOfService %>  </td> <td> <%= a.timeIn.to_s(:time) %> </td> <td> <%= a.timeOut.to_s(:time) %> </td>
+ <td>a.absent</td>
+<td><%= link_to 'Edit', edit_provider_child_attendance_path(@child.provider, @child, a) %></td>
 </tr>
   <% end %>
   
