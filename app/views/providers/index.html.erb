@@ -2,17 +2,13 @@
 
 <h1>Listing Providers</h1>
 
-<table>
+<table border>
   <thead>
     <tr>
-      <th>Fname</th>
-      <th>Middle</th>
-      <th>Lname</th>
-      <th>Addr1</th>
-      <th>Addr2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
+      <th>Name</th>
+
+      <th>Address</th>
+    
       <th>Phone</th>
       <th>Email</th>
       <th>Licensecap</th>
@@ -20,21 +16,16 @@
       <th>Licenseexpdate</th>
       <th>Certlevel</th>
       <th>Sqonerepl</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @providers.each do |provider| %>
       <tr>
-        <td><%= provider.fName %></td>
-        <td><%= provider.middle %></td>
-        <td><%= provider.lName %></td>
-        <td><%= provider.addr1 %></td>
-        <td><%= provider.addr2 %></td>
-        <td><%= provider.city %></td>
-        <td><%= provider.state %></td>
-        <td><%= provider.zip %></td>
+        <td><%= provider.fName %> <%= provider.middle %> <%= provider.lName %></td>
+        <td><%= provider.addr1 %> <%= provider.addr2 %>, 
+        <%= provider.city %>, <%= provider.state %> <%= provider.zip %></td>
         <td><%= provider.phone %></td>
         <td><%= provider.email %></td>
         <td><%= provider.licenseCap %></td>
@@ -43,8 +34,9 @@
         <td><%= provider.certLevel %></td>
         <td><%= provider.sqOneRepl %></td>
         <td><%= link_to 'Show', provider %></td>
-        <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
+        <td></td><%= link_to 'Edit', edit_provider_path(provider) %></td>
         <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Attendance Record', provider_children_path(provider) %></td>
       </tr>
     <% end %>
   </tbody>
