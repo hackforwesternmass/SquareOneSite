@@ -1,4 +1,4 @@
-<%= form_for(@attendance) do |f| %>
+<%= form_for(@attendance, url: provider_child_attendances_path) do |f| %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>

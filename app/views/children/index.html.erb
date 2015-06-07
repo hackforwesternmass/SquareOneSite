@@ -12,7 +12,7 @@
       <th>Transportation</th>
       <th>Start Date</th>
       <th>Provider</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -25,10 +25,10 @@
         <td><%= child.fundSrc %></td>
         <td><%= child.trans %></td>
         <td><%= child.startDate %></td>
-        <td><%= child.provider %></td>
-        <td><%= link_to 'Show', provider_child_path(child.provider, child) %></td>
-        <td><%= link_to 'Edit', edit_provider_child_path(child.provider, child) %></td>
-        <td><%= link_to 'Destroy', provider_child_path(child.provider, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= child.provider.fName %> <%= child.provider.lName %></td>
+        <td><%= link_to 'See/Edit Attendance', provider_child_path(child.provider, child) %> 
+        <%= link_to 'Edit Child', edit_provider_child_path(child.provider, child) %> 
+        <%= link_to 'Delete', provider_child_path(child.provider, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

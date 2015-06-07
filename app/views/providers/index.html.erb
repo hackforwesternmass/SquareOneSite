@@ -2,7 +2,7 @@
 
 <h1>Listing Providers</h1>
 
-<table border>
+<table border width="100%">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,7 +16,7 @@
       <th>Licenseexpdate</th>
       <th>Certlevel</th>
       <th>Sqonerepl</th>
-      <th colspan="4"></th>
+      <th></th><th></th>
     </tr>
   </thead>
 
@@ -33,10 +33,12 @@
         <td><%= provider.licenseExpDate %></td>
         <td><%= provider.certLevel %></td>
         <td><%= provider.sqOneRepl %></td>
-        <td><%= link_to 'Show', provider %></td>
-        <td></td><%= link_to 'Edit', edit_provider_path(provider) %></td>
-        <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Add Attendance Record', provider_children_path(provider) %></td>
+        <td><%= link_to 'Add Attendance Record', provider_children_path(provider) %> </td>
+        <td>
+        <%= link_to 'Show', provider %>
+        <%= link_to 'Edit', edit_provider_path(provider) %>
+        <%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
