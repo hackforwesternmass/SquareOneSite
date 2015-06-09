@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Attendance for Children for provider</h1>
+<p>&nbsp;</p>
+<h3>Listing Children: </h3>
 
 <table border>
   <thead>
@@ -17,6 +18,11 @@
   </thead>
 
   <tbody>
+    
+    <div class="button">
+  <%= link_to 'Add Child', new_provider_child_path %>
+  </div>
+  
     <% @children.each do |child| %>
       <tr>
         <td><%= child.fName %> <%= child.middle %> <%= child.lName %></td>
@@ -36,4 +42,5 @@
 
 <br>
 
-<%= link_to 'New Child', new_provider_child_path %>
+
+

@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fName %><br>
+    <%= f.label(:fName, "First Name: ") %><br>
     <%= f.text_field :fName %>
   </div>
   <div class="field">
-    <%= f.label :middle %><br>
+    <%= f.label( :middle, "Middle Name: ") %><br>
     <%= f.text_field :middle %>
   </div>
   <div class="field">
-    <%= f.label :lName %><br>
+    <%= f.label( :lName, "Last Name: ") %><br>
     <%= f.text_field :lName %>
   </div>
   <div class="field">
-    <%= f.label :addr1 %><br>
+    <%= f.label( :addr1, "Address Line 1: ") %><br>
     <%= f.text_field :addr1 %>
   </div>
   <div class="field">
-    <%= f.label :addr2 %><br>
+    <%= f.label( :addr2 , "Address Line 2: ")%><br>
     <%= f.text_field :addr2 %>
   </div>
   <div class="field">
@@ -45,30 +45,30 @@
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.phone_field :phone %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :licenseCap %><br>
+    <%= f.label( :licenseCap, "License Capacity: ") %><br>
     <%= f.number_field :licenseCap %>
   </div>
   <div class="field">
-    <%= f.label :sqOneCap %><br>
+    <%= f.label( :sqOneCap, "Square One Capacity:") %><br>
     <%= f.number_field :sqOneCap %>
   </div>
   <div class="field">
-    <%= f.label :licenseExpDate %><br>
-    <%= f.date_select :licenseExpDate %>
+    <%= f.label( :licenseExpDate, "License Expiration Date: ") %><br>
+    <%= f.date_field :licenseExpDate %>
   </div>
   <div class="field">
-    <%= f.label :certLevel %><br>
+    <%= f.label( :certLevel, "Certification Level: ") %><br>
     <%= f.text_field :certLevel %>
   </div>
   <div class="field">
-    <%= f.label :sqOneRepl %><br>
+    <%= f.label( :sqOneRepl, "Looking for more Square One Placements:") %><br>
     <%= f.check_box :sqOneRepl %>
   </div>
   <div class="actions">

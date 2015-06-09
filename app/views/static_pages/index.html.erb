@@ -1,4 +1,35 @@
-<h2>List of Providers</h2>
-<% for i in 1..Provider.count do %>
-    <p><%= Provider.find(i).fName + " " + Provider.find(i).lName %></p>
-<% end %>
+<p>&nbsp; &nbsp;</p>
+
+This page is just a place holder to design the system. The home page will actually be a login page where users will be placed
+either in the Report Attendance page if they are a child care provider or in the View/Edit Providers page if they are an admin.
+
+<h3>Child Care Provider Tasks:</h3>
+
+<ul>
+    These links are also available in the navigation menu above.
+    <li>Report Attendance </li>
+    <li> <%= link_to 'Edit Children', provider_children_path(1) %> </li>
+    <li>Request Time Off</li>
+    <li>Request Subcare</li>
+    <li><%= link_to 'My Info', provider_path(1) %></li>
+    <li>Log Off</li>
+</ul>
+
+<p>&nbsp;</p>
+
+    <h3>Admin Tasks:</h3>  
+    <ul>
+    These links are not in the navigation menu up above. Admins will have their  own menu when they log in.
+    <li> <%= link_to 'View/Edit Providers', providers_path %> </li>
+    <li> <%= link_to 'Add New Provider', new_provider_path %>  </li>
+    <li> <%= link_to 'View/Edit Children', provider_children_path(1) %> </li>
+    <li> <%= link_to 'Add New Child', new_provider_child_path(1) %> </li>
+    <li> View/Edit by Date</li>
+</ul>
+
+
+
+
+
+
+<p>&nbsp; &nbsp;</p>

@@ -13,13 +13,18 @@
  *= require_tree .
  *= require_self
  */
+ 
+ @import "nav_style";
+ 
  body {
-     background-color: blue;
+     background-color: #0CBEE2;
  }
 
 .header {
     text-align: center;
 }
+
+
 
  .container { margin-left: auto;
      margin-right: auto;
@@ -27,3 +32,10 @@
      background-color: white;
      padding: 10px;
  }
+
+.content {
+ margin-left: auto;
+     margin-right: auto;
+     width: 80%;
+}
+

@@ -4,11 +4,18 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index
-    @children = Child.all
+    @children = Child.order('lName').all
+   
   end
 
 
-
+def showProviderChildren
+   @provider = Provider.find(params[:provider_id])
+   @children = @provider.children.order('lName')
+   render :index
+   #redirect_to provider_children_path
+  # in view <%= @provider.fName %> <%= @provider.lName %> 
+end
 
   # GET /children/1
   # GET /children/1.json
@@ -31,7 +38,7 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to @child, notice: 'Child was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -45,7 +52,7 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       if @child.update(child_params)
-        format.html { redirect_to @child, notice: 'Child was successfully updated.' }
+        format.html { redirect_to provider_children_path, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
@@ -59,7 +66,7 @@ class ChildrenController < ApplicationController
   def destroy
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to provider_children_url, notice: 'Child was successfully destroyed.' }
+      format.html { redirect_to provider_children_path, notice: 'Child was successfully deleted.' }
       format.json { head :no_content }
     end
   end
