@@ -14,10 +14,7 @@
   <% funding_source = ["EEC", "EEC-dual", "EECHO", "EECFP", "EECTP", "Voucher - Full Day", "Voucher - Half Day", "Two Day Voucher", "Three Day Voucher", "Four Day Voucher", "Voucher - Half/Full"] %>
 
 
-  <% provider_list = [] %>
-  <% for i in Provider.all do %>
-    <% provider_list.push(i.fName + " " + i.lName) %>
-  <% end %>
+  
 
   <div class="field">
     <%= f.label :fName %><br>
@@ -49,7 +46,8 @@
   </div>
   <div class="field">
     <%= f.label :provider_id %><br>
-    <%= f.select :provider_id, provider_list %>
+    
+     <%= f.select( :provider_id, options_for_select(Provider.all.collect{|a| [a.lName + ", " + a.fName , a.id]}, @child.provider_id)) %> 
   </div>
   <div class="actions">
     <%= f.submit %>

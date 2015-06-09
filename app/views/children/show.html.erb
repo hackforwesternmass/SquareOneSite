@@ -43,7 +43,7 @@
 
 <% @child.attendances.each do |a| %>
  <tr> <td>  <%= a.dateOfService %>  </td> <td> <%= a.timeIn.to_s(:time) %> </td> <td> <%= a.timeOut.to_s(:time) %> </td>
- <td>a.absent</td>
+ <td> <%= a.absent %> </td>
 <td><%= link_to 'Edit', edit_provider_child_attendance_path(@child.provider, @child, a) %></td>
 </tr>
   <% end %>
