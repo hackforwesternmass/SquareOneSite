@@ -6,12 +6,12 @@ either in the Report Attendance page if they are a child care provider or in the
 <h3>Child Care Provider Tasks:</h3>
 
 <ul>
-    These links are also available in the navigation menu above.
-    <li>Report Attendance </li>
-    <li> <%= link_to 'Edit Children', provider_children_path(1) %> </li>
-    <li>Request Time Off</li>
-    <li>Request Subcare</li>
-    <li><%= link_to 'My Info', provider_path(1) %></li>
+    (These links are also available in the navigation menu above. Links assume provider 1 has logged in.)
+    <li><%= link_to 'Report Attendance', recordAttendance_provider_children_path(1) %> </li>
+    <li> <%= link_to 'Edit Children', showProviderChildren_provider_children_path(1) %> (for provider 1) </li>
+    <li>Request Time Off (not yet implemented)</li>
+    <li>Request Subcare (not yet implemened)</li>
+    <li><%= link_to 'My Info', edit_provider_path(1) %></li>
     <li>Log Off</li>
 </ul>
 
@@ -19,10 +19,10 @@ either in the Report Attendance page if they are a child care provider or in the
 
     <h3>Admin Tasks:</h3>  
     <ul>
-    These links are not in the navigation menu up above. Admins will have their  own menu when they log in.
-    <li> <%= link_to 'View/Edit Providers', providers_path %> </li>
+    (These links are not in the navigation menu up above. Admins will have their  own menu when they log in.)
+    <li> <%= link_to 'View/Edit all Providers', providers_path %> </li>
     <li> <%= link_to 'Add New Provider', new_provider_path %>  </li>
-    <li> <%= link_to 'View/Edit Children', provider_children_path(1) %> </li>
+    <li> <%= link_to 'View/Edit all Children', provider_children_path(1) %> </li>
     <li> <%= link_to 'Add New Child', new_provider_child_path(1) %> </li>
     <li> View/Edit by Date</li>
 </ul>

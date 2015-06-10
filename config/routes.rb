@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   #root 'providers#index'
 
   resources :static_pages
+  
   resources :providers do
     resources :children do
-      resources :attendances 
+      get 'showProviderChildren', on: :collection
+      get 'recordAttendance', on: :collection
+      post 'recordAttendance', on: :collection
+      resources :attendances
     end
   end
+  
+  resources :children
   
   get 'static_pages/index'
 

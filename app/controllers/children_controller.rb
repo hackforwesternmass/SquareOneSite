@@ -5,16 +5,22 @@ class ChildrenController < ApplicationController
   # GET /children.json
   def index
     @children = Child.order('lName').all
-   
+   # @providers = Providers.order('lName').all
   end
 
-
+# Added this new controller and route showProviderChildren, URL: providers/1/children/showProviderChildren/
 def showProviderChildren
    @provider = Provider.find(params[:provider_id])
    @children = @provider.children.order('lName')
    render :index
-   #redirect_to provider_children_path
-  # in view <%= @provider.fName %> <%= @provider.lName %> 
+end
+
+# Added this new controller and route for recordAttendance, URL: providers/1/children/recordAttendance
+# Can this really handle GET, POST, and PATCH?
+def recordAttendance
+   @provider = Provider.find(params[:provider_id])
+   @children = @provider.children.order('lName')
+   render :recordAttendance
 end
 
   # GET /children/1
@@ -25,10 +31,13 @@ end
   # GET /children/new
   def new
     @child = Child.new
+ 
   end
 
   # GET /children/1/edit
-  def editchild
+  def edit
+
+ 
   end
 
   # POST /children
@@ -38,7 +47,7 @@ end
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to root_path, notice: 'Child was successfully created.' }
+        format.html { redirect_to :back, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -52,7 +61,7 @@ end
   def update
     respond_to do |format|
       if @child.update(child_params)
-        format.html { redirect_to provider_children_path, notice: 'Child was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
         format.html { render :edit }
@@ -66,7 +75,7 @@ end
   def destroy
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to provider_children_path, notice: 'Child was successfully deleted.' }
+      format.html { redirect_to :back, notice: 'Child was successfully deleted.' }
       format.json { head :no_content }
     end
   end

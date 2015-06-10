@@ -1,7 +1,16 @@
+<p>&nbsp;</p>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Providers</h1>
 
+<h3>Listing Providers:</h3>
+ 
+ 
+ 
+ <p><div class="button">
+  <%= link_to 'Add Provider', new_provider_path %>
+  </div>
+  </p>
+ 
 <table border width="100%">
   <thead>
     <tr>
@@ -31,7 +40,7 @@
         <td><%= provider.email %></td>
         <td><%= provider.licenseCap %></td>
         <td><%= provider.sqOneCap %></td>
-        <td><%= provider.licenseExpDate %></td>
+        <td><%= provider.licenseExpDate.strftime("%m/%d/%Y") %></td>
         <td><%= provider.certLevel %></td>
         <td><%= provider.sqOneRepl %></td>
         <td><%= link_to 'Add Attendance Record', provider_children_path(provider) %> </td>

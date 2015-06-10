@@ -17,11 +17,11 @@ Family Child Care Provider Portal</h1>
   <nav>
       <ul class="nav">
         <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Attendance', root_path %></li>
-         <li> <%= link_to 'Children', provider_children_path(1) %> </li>
+        <li><%= link_to 'Attendance', recordAttendance_provider_children_path(1) %></li>
+         <li> <%= link_to 'Children', showProviderChildren_provider_children_path(1) %> </li>
          <li><%= link_to 'Time Off', root_path %></li>
    <li><%= link_to 'Sub Care', root_path %></li> 
-    <li><%= link_to 'My Info', provider_path(1) %></li>
+    <li><%= link_to 'My Info', edit_provider_path(1) %></li>
    <li><%= link_to 'Log Off', root_path %></li> 
         </ul>
         </nav>
