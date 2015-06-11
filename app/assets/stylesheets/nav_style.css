@@ -1,0 +1,157 @@
+
+
+
+nav ol, nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+.nav table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+ 
+
+/*
+ * Copyright (c) 2012-2013 Thibaut Courouble
+ * http://www.cssflow.com
+ *
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+
+nav {
+  height: 30px;
+}
+
+.nav {
+  margin: 0 auto;
+  width: 60%;
+}
+.nav a, .button a {
+  display: block;
+  text-decoration: none;
+}
+.nav > li {
+  float: left;
+  margin-right: 3px;
+}
+
+@media screen and (max-width: 300px) {
+  .nav > li {
+  float: none;
+  display:block;
+   }
+}
+
+.button a {
+   width: 100px;
+}
+
+.nav > li > a, .button a {
+
+   text-align: center;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+  background: #0CBEE2;
+  border-radius: 3px 3px 0 0;
+  background-image: linear-gradient(to bottom, #0CBEE2, #0A98B5);
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 -2px 2px rgba(0, 0, 0, 0.03), 0 2px white, 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 -2px 2px rgba(0, 0, 0, 0.03), 0 2px white, 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.nav > li > a:hover, .button a:hover {
+  text-decoration: none;
+  background: #85a6b8;
+  background-image: linear-gradient(to bottom, #DD8F4D, #E4A571);
+}
+.nav > li.active > a, .nav > li > a:active, .nav > .dropdown:hover > a {
+  background: white;
+  color: #404040;
+  text-shadow: none;
+  -webkit-box-shadow: 0 2px white, 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px white, 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.nav a.icon {
+  position: relative;
+  width: 40.8px;
+  padding: 0;
+}
+.nav a.icon > span {
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  height: 16px;
+  width: 16px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+.nav a.icon.home > span {
+  background-image: url("home.png");
+}
+.nav .active a.icon > span, .nav a.icon:active > span {
+  background-position: 0 -16px;
+}
+
+.dropdown {
+  position: relative;
+  border-bottom: 5px solid white;
+}
+.dropdown:hover ul {
+  display: block;
+}
+.dropdown ul {
+  display: none;
+  position: absolute;
+  top: 39px;
+  left: -1px;
+  min-width: 160px;
+  padding: 0 0 5px;
+  background: white;
+  border: 1px solid #dadada;
+  border-top: 0;
+  border-radius: 0 0 3px 3px;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.04);
+}
+.dropdown ul.large {
+  min-width: 200px;
+}
+.dropdown li {
+  display: block;
+  margin: 0 18px;
+  overflow: visible;
+}
+.dropdown li + li {
+  border-top: 1px solid #eee;
+}
+.dropdown li a {
+  color: #555;
+  padding: 8px 18px;
+  margin: 0 -18px;
+}
+.dropdown li a:hover {
+  color: black;
+}
