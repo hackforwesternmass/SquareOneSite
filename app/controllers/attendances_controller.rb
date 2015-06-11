@@ -10,6 +10,8 @@ class AttendancesController < ApplicationController
   # GET /attendances/1
   # GET /attendances/1.json
   def show
+     @provider = Provider.find(params[:provider_id])
+    @child = Child.find(params[:child_id])
   end
 
   # GET /attendances/new
@@ -20,6 +22,8 @@ class AttendancesController < ApplicationController
 
   # GET /attendances/1/edit
   def edit
+    @provider = Provider.find(params[:provider_id])
+    @child = Child.find(params[:child_id])
   end
 
   # POST /attendances

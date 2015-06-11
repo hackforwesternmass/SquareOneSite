@@ -57,5 +57,5 @@
   <%= @attendance.dateEdited %>
 </p>
 
-<%= link_to 'Edit', edit_provider_child_attendance_path(@attendance) %> |
-<%= link_to 'Back', provider_child_attendances_path %>
+<%= link_to 'Edit', edit_provider_child_attendance_path(@provider, @child, @attendance) %> |
+<%= link_to 'Back', :back %>

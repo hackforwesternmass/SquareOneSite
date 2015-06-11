@@ -5,16 +5,17 @@
   }
 </style>
 <% 
- today = Time.now.strftime("%m/%d/%Y")
- monday = Time.now.beginning_of_week
+ now = Time.current
+ today = now.strftime("%m/%d/%Y")
+ monday = now.beginning_of_week
  mondayStr = monday.strftime("%m/%d/%Y") 
- tuesday = (Time.now.beginning_of_week + 1.day)
+ tuesday = (now.beginning_of_week + 1.day)
  tuesdayStr = tuesday.strftime("%m/%d/%Y") 
- wednesday = (Time.now.beginning_of_week + 2.day)
+ wednesday = (now.beginning_of_week + 2.day)
  wednesdayStr = wednesday.strftime("%m/%d/%Y") 
- thursday = (Time.now.beginning_of_week + 3.day)
+ thursday = (now.beginning_of_week + 3.day)
  thursdayStr = thursday.strftime("%m/%d/%Y") 
- friday = (Time.now.beginning_of_week + 4.day)
+ friday = (now.beginning_of_week + 4.day)
  fridayStr = friday.strftime("%m/%d/%Y") 
 
  absence_reasons = ["1 - Present", "A - Unexcused", "E1 - Child on Vacation", "E2 - Mom in Hospital", "E3 - Child in Hospital", "E4 - Child Sick (not hospitalized)", "E5 - Child in Subcare", "E6 - Parent Refused Subcare", "E7 - Intervention", "E8 - Child Doctor Appointment", "C1 - Holiday Closure", "C2 - No Square One Transportation", "C3 - Weather Closure", "C4 - Provider on Holiday", "C5 - Professional Day"] 
@@ -44,20 +45,34 @@
   <% # Loop through Mon-Fri of this week
     [ monday, tuesday, wednesday, thursday, friday].each do |day|
       
+     %>
+     <td>
+         <% # if today, mark in red
+           if day.to_date == now.to_date  %>
+                  <h4 style="color:red">TODAY</h4>
+          <% end %>
+          
+       <%
        # pull out each attendance in this week (SQL WHERE). Date has to be in yyyy-mm-dd format 
         a = child.attendances.where(dateOfService: day.strftime("%Y-%m-%d")).first  
     
         if a == nil  # if no attendance found, generate a blank new one
+            newAttendance = true
             a = child.attendances.new 
-         end
-      %>
+            a.timeIn = now.beginning_of_day
+            a.timeOut = now.beginning_of_day
+            %>
+            <h4 style="color:red">Please fill in:</h4>   
+        <% end %>
           
          <%= form_for [@provider, child, a] do |f|          %>
               
-                <td>
+                
                 <%= f.hidden_field :provider_id, value: @provider %>
                 <%= f.hidden_field :dateEdited, value: day.strftime("%Y-%m-%d") %>
-                
+                   
+              
+               
                 <div class="field">
                   <%= f.label( :dateOfService, "Date:") %>
                   <%= f.date_field :dateOfService, value: day.strftime("%Y-%m-%d")  %>
@@ -77,10 +92,27 @@
                   <%= f.label( :absent, "Reason if Absent") %>
                   <%= f.select :absent, options_for_select(absence_reasons, a.absent) %>
                 </div>
- 
+                
+            <% if newAttendance %>
+                <div class="field">
+                  <%= f.label( :whoCreated, "Created by:") %>
+                  <%= f.text_field :whoCreated %>
+                  <%= f.hidden_field :dateCreated, value: now %>
+                </div>
+                
+            <% else %>
+                
+                <div class="field">
+                  <%= f.label( :whoEdited, "Edited by:") %>
+                  <%= f.text_field :whoEdited %>
+                  <%= f.hidden_field :dateEdited, value: now %>
+                </div>
+             <% end %>
+             
                 <div class="actions">
                   <%= f.submit %>
-                </div></td>
+                </div> </td>
+               
          <% end %>
      <% end %>
      

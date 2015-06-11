@@ -29,20 +29,24 @@ end
 
   # GET /children/new
   def new
+    @provider = Provider.find(params[:provider_id])
     @child = Child.new
+   # @child.provider_id = @provider
  
   end
 
   # GET /children/1/edit
   def edit
-
+    @provider = Provider.find(params[:provider_id])
  
   end
 
   # POST /children
   # POST /children.json
   def create
-    @child = Child.new(child_params)
+    @provider = Provider.find(params[:provider_id])
+    @child = @provider.children.create(child_params)
+   # @child = Child.new(child_params)
 
     respond_to do |format|
       if @child.save

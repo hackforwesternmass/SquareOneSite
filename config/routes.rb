@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :children
+
   
   get 'static_pages/index'
 
