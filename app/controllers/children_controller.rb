@@ -20,7 +20,6 @@ end
 def recordAttendance
    @provider = Provider.find(params[:provider_id])
    @children = @provider.children.order('lName')
-   render :recordAttendance
 end
 
   # GET /children/1

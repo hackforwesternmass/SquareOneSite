@@ -55,6 +55,9 @@
          <%= form_for [@provider, child, a] do |f|          %>
               
                 <td>
+                <%= f.hidden_field :provider_id, value: @provider %>
+                <%= f.hidden_field :dateEdited, value: day.strftime("%Y-%m-%d") %>
+                
                 <div class="field">
                   <%= f.label( :dateOfService, "Date:") %>
                   <%= f.date_field :dateOfService, value: day.strftime("%Y-%m-%d")  %>

@@ -25,13 +25,14 @@ class AttendancesController < ApplicationController
   # POST /attendances
   # POST /attendances.json
   def create
+    @provider = Provider.find(params[:provider_id])
     @child = Child.find(params[:child_id])
     @attendance = @child.attendances.create(attendance_params)
 #    @attendance = Attendance.new(attendance_params)
 
     respond_to do |format|
       if @attendance.save
-        format.html { redirect_to root_path, notice: 'Attendance was successfully created.' }
+        format.html { redirect_to :back, notice: 'Attendance was successfully created.' }
         format.json { render :show, status: :created, location: @attendance }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class AttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @attendance.update(attendance_params)
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Attendance was successfully updated.' }
         format.json { render :show, status: :ok, location: @attendance }
       else
         format.html { render :edit }
