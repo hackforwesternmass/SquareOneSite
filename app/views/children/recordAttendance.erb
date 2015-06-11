@@ -1,0 +1,96 @@
+<p id="notice"><%= notice %></p>
+<style>
+  .content { margin: 5px;
+             width: 100%;
+  }
+</style>
+<% 
+ today = Time.now.strftime("%m/%d/%Y")
+ monday = Time.now.beginning_of_week
+ mondayStr = monday.strftime("%m/%d/%Y") 
+ tuesday = (Time.now.beginning_of_week + 1.day)
+ tuesdayStr = tuesday.strftime("%m/%d/%Y") 
+ wednesday = (Time.now.beginning_of_week + 2.day)
+ wednesdayStr = wednesday.strftime("%m/%d/%Y") 
+ thursday = (Time.now.beginning_of_week + 3.day)
+ thursdayStr = thursday.strftime("%m/%d/%Y") 
+ friday = (Time.now.beginning_of_week + 4.day)
+ fridayStr = friday.strftime("%m/%d/%Y") 
+
+ absence_reasons = ["1 - Present", "A - Unexcused", "E1 - Child on Vacation", "E2 - Mom in Hospital", "E3 - Child in Hospital", "E4 - Child Sick (not hospitalized)", "E5 - Child in Subcare", "E6 - Parent Refused Subcare", "E7 - Intervention", "E8 - Child Doctor Appointment", "C1 - Holiday Closure", "C2 - No Square One Transportation", "C3 - Weather Closure", "C4 - Provider on Holiday", "C5 - Professional Day"] 
+%>
+
+
+<p>&nbsp;</p>
+<h3>Attendances for Child Care Provider: <%= @provider.fName %> <%= @provider.lName %>
+  <br>
+  Week of <%= mondayStr %> <br>
+  Today is <%= today %> </h3>
+    
+<p></p>
+ 
+      
+    <% @children.each do |child| %>
+      
+  Child Name:<b> <%= child.fName %> <%= child.middle %> <%= child.lName %></b>,  DOB: <%= child.dob.strftime("%m/%d/%Y") %>, Funding Source: <%= child.fundSrc %> <br/>
+  
+    <table border>
+        <thead>
+         <tr>      <th>Monday  </th><th>Tuesday  </th><th>Wednesday  </th><th>Thursday </th> <th>Friday </th></tr>
+        </thead>
+
+  <tbody>
+    <tr> 
+  <% # Loop through Mon-Fri of this week
+    [ monday, tuesday, wednesday, thursday, friday].each do |day|
+      
+       # pull out each attendance in this week (SQL WHERE). Date has to be in yyyy-mm-dd format 
+        a = child.attendances.where(dateOfService: day.strftime("%Y-%m-%d")).first  
+    
+        if a == nil  # if no attendance found, generate a blank new one
+            a = child.attendances.new 
+         end
+      %>
+          
+         <%= form_for [@provider, child, a] do |f|          %>
+              
+                <td>
+                <div class="field">
+                  <%= f.label( :dateOfService, "Date:") %>
+                  <%= f.date_field :dateOfService, value: day.strftime("%Y-%m-%d")  %>
+                </div>
+               
+                
+                <div class="field">
+                  <%= f.label( :timeIn, "TimeIn:") %>
+                  <%= f.time_select :timeIn %>
+                </div>
+                
+                <div class="field">
+                  <%= f.label( :timeOut, "TimeOut:") %>
+                  <%= f.time_select :timeOut %>
+                </div>
+                <div class="field">
+                  <%= f.label( :absent, "Reason if Absent") %>
+                  <%= f.select :absent, options_for_select(absence_reasons, a.absent) %>
+                </div>
+ 
+                <div class="actions">
+                  <%= f.submit %>
+                </div></td>
+         <% end %>
+     <% end %>
+     
+      
+      </tr>
+  </tbody>
+</table>
+</ol>
+<p> <hr/> </p>
+
+ <% end %>
+
+
+
+
+
