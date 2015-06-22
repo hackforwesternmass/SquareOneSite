@@ -5,8 +5,16 @@
    height: 30px;
    line-height: 30px;
 }
-
 </style>
+
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+    } 
+); 
+    
+</script>
 &nbsp;
 <h3>Search Results for Children from <%= @fromDate %> to <%= @toDate %></h3>
 
@@ -35,10 +43,12 @@
 <% # pull out each attendance (SQL WHERE BETWEEN) in the fromDate to toDate range. Date has to be in yyyy-mm-dd format 
         attendances = child.attendances.where(dateOfService: @fromDate .. @toDate) 
 %>
-<table border>
+<table border id="resultsTable" class="tablesorter">
+  <thead>
   <tr><th>Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
  <th></th></tr>
-
+</thead>
+<tbody>
 <% attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.dateOfService.strftime("%m/%d/%Y") %></td>
@@ -52,7 +62,7 @@
  <td><div class="button"><%= link_to 'Edit',  edit_provider_child_attendance_path(child.provider, child, attendance) %> </div></td>
         </tr>
 <% end %>
-
+</tbody>
 </table>
    
 <% end %>

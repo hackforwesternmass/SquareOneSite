@@ -21,12 +21,15 @@ class ChildrenController < ApplicationController
      @fromDate = Date.current
    end
    
-   if @toDate == "" || @toDate == nil
+   if @toDate == "" 
      @toDate = Date.current
    end
-   @results = Child.search(child_id)
+   
    if child_id.present?
-     @child = Child.find(child_id)
+       @results = [Child.find(child_id)]
+       @child = Child.find(child_id)
+   else
+       @results =  Child.all.order('lName')
    end
   end
   

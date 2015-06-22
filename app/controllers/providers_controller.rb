@@ -10,9 +10,21 @@ class ProvidersController < ApplicationController
   # GET /search_results
   def search_results 
    provider_id = params[:provider_id]
-   @results = Provider.search(provider_id)
+   @fromDate = params[:fromDate]
+   @toDate = params[:toDate]
+   if @fromDate == ""
+     @fromDate = Date.current
+   end
+   
+   if @toDate == "" 
+     @toDate = Date.current
+   end
+   
    if provider_id.present?
      @provider = Provider.find(provider_id)
+     @results = [Provider.find(provider_id)]
+   else
+     @results = Provider.order('lName').all
    end
   end
   

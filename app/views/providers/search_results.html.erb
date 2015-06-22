@@ -1,57 +1,82 @@
 <p>&nbsp;</p>
 <p id="notice"><%= notice %></p>
+<style>
+  .button a {
+   width: 70px;
+   height: 30px;
+   line-height: 30px;
+}
+</style>
 
-
-<h3>Search Results:</h3>
- 
-<table border width="100%">
-  <thead>
-    <tr>
-      <th>Name</th>
-
-      <th>Address</th>
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+    } 
+); 
     
-      <th>Phone</th>
-      <th>Email</th>
-      <th>License capacity</th>
-      <th>SquareOne capacity</th>
-      <th>License Exp Date</th>
-      <th>Cert Level</th>
-      <th>Looking for more SquareOne placements</th>
-      
-      <th></th><th></th>
-    </tr>
-  </thead>
+</script>
+&nbsp;
 
-  <tbody>
+<h3>Search Results for Providers from <%= @fromDate %> to <%= @toDate %></h3>
+
+
     <% @results.each do |provider| %>
-      <tr>
-        <td><%= provider.fName %> <%= provider.middle %> <%= provider.lName %></td>
-        <td><%= provider.addr1 %> <%= provider.addr2 %>, 
-        <%= provider.city %>, <%= provider.state %> <%= provider.zip %></td>
-        <td><%= provider.phone %></td>
-        <td><%= provider.email %></td>
-        <td><%= provider.licenseCap %></td>
-        <td><%= provider.sqOneCap %></td>
-        <td><%= provider.licenseExpDate.strftime("%m/%d/%Y") %></td>
-        <td><%= provider.certLevel %></td>
-        <td><%= provider.sqOneRepl %></td>
-        <td><%= link_to 'Add Attendance Record', showProviderChildren_provider_children_path(provider) %> </td>
-        <td>
-        <%= link_to 'Show', provider %>
-        <%= link_to 'Edit', edit_provider_path(provider) %>
-        <%= link_to 'Delete', provider, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
+<hr/>
+        Name: <%= provider.fName %> <%= provider.middle %> <%= provider.lName %>
+    <br>Address:    <%= provider.addr1 %> <%= provider.addr2 %>, 
+        <%= provider.city %>, <%= provider.state %> <%= provider.zip %>
+    <br>Phone:    <%= provider.phone %>
+    <br>Email:    <%= provider.email %>
+    <br>License Capacity:    <%= provider.licenseCap %>
+    <br>Square One Capacity:    <%= provider.sqOneCap %>
+    <br>License Expiration Date:    <%= provider.licenseExpDate.strftime("%m/%d/%Y") %>
+    <br>Certification Level:    <%= provider.certLevel %>
+    <br>Looking for more SquareOne placements:    <%= provider.sqOneRepl %>
 <br>
+    <div class="button">    <%= link_to 'Edit', edit_provider_path(provider) %> </div>
 
-<p>
+<table border  id="resultsTable" class="tablesorter">
+  <thead>
+  <tr><th>Child Name</th><th>DOB</th><th>Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
+ <th></th></tr>
+ </thead>
+   <tbody>
+ 
+  <% provider.children.order('lName').each do |child| %>     
+   
+<br><% # pull out each attendance (SQL WHERE BETWEEN) in the fromDate to toDate range. Date has to be in yyyy-mm-dd format 
+        attendances = child.attendances.where(dateOfService: @fromDate .. @toDate) 
+%>
+
+
+<% attendances.order('dateOfService').each do |attendance| %>
+  
+      <tr>
+         <td> <%= child.fName %>  <%= child.middle %>  <%= child.lName %></td>
+         <td><%= child.dob.strftime("%m/%d/%Y") %></td>
+         
+        <td><%= attendance.dateOfService.strftime("%m/%d/%Y") %></td>
+        <td><%= attendance.timeIn.to_s(:time) %></td>
+        <td><%= attendance.timeOut.to_s(:time) %></td>
+        <td><%= attendance.absent %></td>
+        <td><%= attendance.whoCreated %></td>
+        <td><%= attendance.created_at.strftime("%m/%d/%Y") %></td>
+        <td><%= attendance.whoEdited %></td>
+        <td><%= attendance.updated_at.strftime("%m/%d/%Y") %></td>
+ <td><div class="button"><%= link_to 'Edit',  edit_provider_child_attendance_path(child.provider, child, attendance) %> </div></td>
+        </tr>
+<% end %>
+
+
+   
+<% end %>
+</tbody>
+</table>
+<% end %>
+ 
+  
+<p></p>
 
 <%= link_to 'Back', :back %>
 
