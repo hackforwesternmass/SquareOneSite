@@ -38,7 +38,7 @@
 
 <table border  id="resultsTable" class="tablesorter">
   <thead>
-  <tr><th>Child Name</th><th>DOB</th><th>Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
+  <tr><th>Child Name</th><th>DOB</th><th>Attendance Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
  <th></th></tr>
  </thead>
    <tbody>
@@ -53,7 +53,8 @@
 <% attendances.order('dateOfService').each do |attendance| %>
   
       <tr>
-         <td> <%= child.fName %>  <%= child.middle %>  <%= child.lName %></td>
+         <td> <%= child.fName %>  <%= child.middle %>  <%= child.lName %> <br>
+         <%= link_to "Edit Child", edit_provider_child_path(child.provider, child) %> </td>
          <td><%= child.dob.strftime("%m/%d/%Y") %></td>
          
         <td><%= attendance.dateOfService.strftime("%m/%d/%Y") %></td>

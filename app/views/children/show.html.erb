@@ -11,6 +11,10 @@
 </p>
 
 <p>
+  <strong>Age:</strong>
+<%= ageInYears(@child.dob) %> yr <%= ageMonthRemainder(@child.dob) %> mo.
+</p>
+<p>
   <strong>Funding source:</strong>
   <%= @child.fundSrc %>
 </p>
@@ -23,6 +27,11 @@
 <p>
   <strong>Start Date:</strong>
   <%= @child.startDate %>
+</p>
+
+<p>
+  <strong>Termination Date:</strong>
+  <%= @child.terminationDate %>
 </p>
 
 <p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607150255) do
+ActiveRecord::Schema.define(version: 20150622204849) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "child_id"
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20150607150255) do
     t.integer  "trans"
     t.date     "startDate"
     t.integer  "provider_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.date     "terminationDate"
   end
 
   add_index "children", ["provider_id"], name: "index_children_on_provider_id"

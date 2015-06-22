@@ -25,6 +25,8 @@
   Name: <%= child.fName %>  <%= child.middle %>  <%= child.lName %>
 <br>
   Date of Birth: <%= child.dob.strftime("%m/%d/%Y") %>
+  <br>
+  Age:   <%= ageInYears(child.dob) %> yr <%= ageMonthRemainder(child.dob) %> mo.
 <br>
   Funding source:  <%= child.fundSrc %>
 <br>
@@ -32,6 +34,11 @@
 <br>
   Start Date:  <%= child.startDate.strftime("%m/%d/%Y") %>
 <br>
+<% if child.terminationDate? %>
+<b> Termination Date:  <%= child.terminationDate.strftime("%m/%d/%Y") %> </b>
+<br>
+<% end %>
+
   Provider:    <%= child.provider.fName %> <%= child.provider.lName %>
 <br>
 
@@ -45,7 +52,7 @@
 %>
 <table border id="resultsTable" class="tablesorter">
   <thead>
-  <tr><th>Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
+  <tr><th>Attendance Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
  <th></th></tr>
 </thead>
 <tbody>

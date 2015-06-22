@@ -1,21 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>&nbsp;</p>
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+    } 
+); 
+</script>
+
 <h3>Listing Children 
 <% if @provider != nil %>
     for  <%= @provider.fName %> <%= @provider.lName %>
     <% end %>
     </h3>
     
-<table border>
+<table border id="resultsTable" class="tablesorter">
   <thead>
     <tr>
       <th>Name</th>
       
       <th>DOB</th>
+      <th>Age</th>
       <th>Funding</th>
       <th>Transportation</th>
       <th>Start Date</th>
+      <th>Termination Date</th>   
       <th>Provider</th>
       <th></th>
     </tr>
@@ -32,9 +42,11 @@
         <td><%= child.fName %> <%= child.middle %> <%= child.lName %></td>
         
         <td><%= child.dob.strftime("%m/%d/%Y") %></td>
+        <td><%= ageInYears(child.dob) %> yr <%= ageMonthRemainder(child.dob) %> mo.</td>
         <td><%= child.fundSrc %></td>
         <td><%= child.trans %></td>
         <td><%= child.startDate.strftime("%m/%d/%Y") %></td>
+         <td><%= child.terminationDate %></td>
         <td><%= child.provider.fName %> <%= child.provider.lName %></td>
         <td><%= link_to 'See/Edit Attendance', provider_child_path(child.provider, child) %> 
         <%= link_to 'Edit Child', edit_provider_child_path(child.provider, child) %> 

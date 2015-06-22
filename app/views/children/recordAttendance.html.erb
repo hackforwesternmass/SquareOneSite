@@ -33,12 +33,12 @@
 
 
     
-<p></p>
+<p><hr/></p>
  
       
     <% @children.each do |child| %>
-      
-  Child Name:<b> <%= child.fName %> <%= child.middle %> <%= child.lName %></b>,  DOB: <%= child.dob.strftime("%m/%d/%Y") %>, Funding Source: <%= child.fundSrc %> <br/>
+      <% unless child.terminationDate? %>
+  Child Name:<b> <%= child.fName %> <%= child.middle %> <%= child.lName %></b>,  DOB: <%= child.dob.strftime("%m/%d/%Y") %>, Age: <%= ageInYears(child.dob) %> yr <%= ageMonthRemainder(child.dob) %> mo., Funding Source: <%= child.fundSrc %> <br/>
   
  
     <table border>
@@ -115,15 +115,16 @@
                 <div class="actions">
                   <%= f.submit %>
                 </div> </td>
-               
-         <% end %>
+        <% end %>   
+
      <% end %>
+ <% end %>
      
       
       </tr>
   </tbody>
 </table>
-</ol>
+
 <p> <hr/> </p>
 
  <% end %>

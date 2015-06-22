@@ -1,6 +1,13 @@
 <p>&nbsp;</p>
 <p id="notice"><%= notice %></p>
 
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+    } 
+); 
+</script>
 
 <h3>Listing Providers:</h3>
  
@@ -11,7 +18,7 @@
   </div>
   </p>
  
-<table border width="100%">
+<table border width="100%" id="resultsTable" class="tablesorter">
   <thead>
     <tr>
       <th>Name</th>

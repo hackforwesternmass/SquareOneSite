@@ -7,6 +7,19 @@ class ChildrenController < ApplicationController
     @children = Child.order('lName').all
   end
 
+  # borrowed from http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
+  def ageInYears(dob)
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+  helper_method :ageInYears
+  
+  def ageMonthRemainder(dob)
+    now = Time.now.utc.to_date
+    return (now.month - dob.month).abs
+  end
+  helper_method :ageMonthRemainder
+  
   # GET /search
   def search
   
@@ -120,6 +133,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
-      params.require(:child).permit(:fName, :middle, :lName, :dob, :fundSrc, :trans, :startDate, :provider_id)
+      params.require(:child).permit(:fName, :middle, :lName, :dob, :fundSrc, :trans, :startDate, :terminationDate, :provider_id)
     end
 end
