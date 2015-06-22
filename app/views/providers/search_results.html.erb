@@ -2,14 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<h3>Listing Providers:</h3>
- 
- 
- 
- <p><div class="button">
-  <%= link_to 'Add Provider', new_provider_path %>
-  </div>
-  </p>
+<h3>Search Results:</h3>
  
 <table border width="100%">
   <thead>
@@ -31,7 +24,7 @@
   </thead>
 
   <tbody>
-    <% @providers.each do |provider| %>
+    <% @results.each do |provider| %>
       <tr>
         <td><%= provider.fName %> <%= provider.middle %> <%= provider.lName %></td>
         <td><%= provider.addr1 %> <%= provider.addr2 %>, 
@@ -54,10 +47,12 @@
   </tbody>
 </table>
 
+
+
 <br>
 
 <p>
 
-
+<%= link_to 'Back', :back %>
 
 </p>

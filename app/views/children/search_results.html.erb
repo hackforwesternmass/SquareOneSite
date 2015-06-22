@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %>
+<style>
+  .button a {
+   width: 70px;
+   height: 30px;
+   line-height: 30px;
+}
+
+</style>
+&nbsp;
+<h3>Search Results for Children from <%= @fromDate %> to <%= @toDate %></h3>
+
+ 
+    
+<% @results.each do |child| %>
+<hr>  
+  Name: <%= child.fName %>  <%= child.middle %>  <%= child.lName %>
+<br>
+  Date of Birth: <%= child.dob.strftime("%m/%d/%Y") %>
+<br>
+  Funding source:  <%= child.fundSrc %>
+<br>
+  Transportation:  <%= child.trans %>
+<br>
+  Start Date:  <%= child.startDate.strftime("%m/%d/%Y") %>
+<br>
+  Provider:    <%= child.provider.fName %> <%= child.provider.lName %>
+<br>
+
+<div class="button">
+<%= link_to 'Edit Child', edit_provider_child_path(child.provider, child) %> 
+</div>
+
+<p>
+<% # pull out each attendance (SQL WHERE BETWEEN) in the fromDate to toDate range. Date has to be in yyyy-mm-dd format 
+        attendances = child.attendances.where(dateOfService: @fromDate .. @toDate) 
+%>
+<table border>
+  <tr><th>Date</th><th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created by</th><th>Date Created</th><th>Edited by</th><th>Date Edited</th>
+ <th></th></tr>
+
+<% attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.dateOfService.strftime("%m/%d/%Y") %></td>
+        <td><%= attendance.timeIn.to_s(:time) %></td>
+        <td><%= attendance.timeOut.to_s(:time) %></td>
+        <td><%= attendance.absent %></td>
+        <td><%= attendance.whoCreated %></td>
+        <td><%= attendance.created_at.strftime("%m/%d/%Y") %></td>
+        <td><%= attendance.whoEdited %></td>
+        <td><%= attendance.updated_at.strftime("%m/%d/%Y") %></td>
+ <td><div class="button"><%= link_to 'Edit',  edit_provider_child_attendance_path(child.provider, child, attendance) %> </div></td>
+        </tr>
+<% end %>
+
+</table>
+   
+<% end %>
+<hr>
+<%= link_to 'Back', :back %>
+
+
+
+

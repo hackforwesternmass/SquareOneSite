@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"> <%= notice %></p>
 <style>
   .content { margin: 5px;
              width: 100%;
   }
 </style>
 <% 
- now = Time.current
- today = now.strftime("%m/%d/%Y")
+ now = @date
  monday = now.beginning_of_week
  mondayStr = monday.strftime("%m/%d/%Y") 
  tuesday = (now.beginning_of_week + 1.day)
@@ -23,10 +22,16 @@
 
 
 <p>&nbsp;</p>
-<h3>Attendances for Child Care Provider: <%= @provider.fName %> <%= @provider.lName %>
-  <br>
-  Week of <%= mondayStr %> <br>
-  Today is <%= today %> </h3>
+<h3>Attendances for Child Care Provider <em> <%= @provider.fName %> <%= @provider.lName %> </em> <br>
+   For the week of <em>Monday <%= mondayStr %> </em>:</h3>
+   
+ 
+  <%= form_tag recordAttendance_provider_children_path(@provider.id), method: "get" do %>
+    Change Week:  <%= select_date now %>  <%= submit_tag("Submit") %>
+    <% end %>
+    
+
+
     
 <p></p>
  
@@ -35,6 +40,7 @@
       
   Child Name:<b> <%= child.fName %> <%= child.middle %> <%= child.lName %></b>,  DOB: <%= child.dob.strftime("%m/%d/%Y") %>, Funding Source: <%= child.fundSrc %> <br/>
   
+ 
     <table border>
         <thead>
          <tr>      <th>Monday  </th><th>Tuesday  </th><th>Wednesday  </th><th>Thursday </th> <th>Friday </th></tr>
@@ -48,7 +54,7 @@
      %>
      <td>
          <% # if today, mark in red
-           if day.to_date == now.to_date  %>
+           if day.to_date == Date.current.to_date  %>
                   <h4 style="color:red">TODAY</h4>
           <% end %>
           
@@ -61,19 +67,16 @@
             a = child.attendances.new 
             a.timeIn = now.beginning_of_day
             a.timeOut = now.beginning_of_day
+          
+           
             %>
             <h4 style="color:red">Please fill in:</h4>   
         <% end %>
           
          <%= form_for [@provider, child, a] do |f|          %>
+              <%= f.hidden_field :provider_id, value:@provider.id %>
               
-                
-                <%= f.hidden_field :provider_id, value: @provider %>
-                <%= f.hidden_field :dateEdited, value: day.strftime("%Y-%m-%d") %>
-                   
-              
-               
-                <div class="field">
+              <div class="field">
                   <%= f.label( :dateOfService, "Date:") %>
                   <%= f.date_field :dateOfService, value: day.strftime("%Y-%m-%d")  %>
                 </div>
@@ -97,7 +100,7 @@
                 <div class="field">
                   <%= f.label( :whoCreated, "Created by:") %>
                   <%= f.text_field :whoCreated %>
-                  <%= f.hidden_field :dateCreated, value: now %>
+                 
                 </div>
                 
             <% else %>
@@ -105,7 +108,7 @@
                 <div class="field">
                   <%= f.label( :whoEdited, "Edited by:") %>
                   <%= f.text_field :whoEdited %>
-                  <%= f.hidden_field :dateEdited, value: now %>
+                
                 </div>
              <% end %>
              

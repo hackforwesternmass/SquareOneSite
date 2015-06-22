@@ -14,7 +14,6 @@
   <% absence_reasons = ["1 - Present", "A - Unexcused", "E1 - Child on Vacation", "E2 - Mom in Hospital", "E3 - Child in Hospital", "E4 - Child Sick (not hospitalized)", "E5 - Child in Subcare", "E6 - Parent Refused Subcare", "E7 - Intervention", "E8 - Child Doctor Appointment", "C1 - Holiday Closure", "C2 - No Square One Transportation", "C3 - Weather Closure", "C4 - Provider on Holiday", "C5 - Professional Day"] %>
 
  
-
   <div class="field">
     <%= f.label :child_id %><br>
  <%= f.select( :child_id, options_for_select(Child.all.collect{|a| [a.lName + ", " + a.fName , a.id]}, @attendance.child_id)) %>   
@@ -24,42 +23,33 @@
     <%= f.label :provider_id %><br>
  <%= f.select( :provider_id, options_for_select(Provider.all.collect{|a| [a.lName + ", " + a.fName , a.id]}, @attendance.provider_id)) %> 
   </div>
+ 
   <div class="field">
-    <%= f.label :childTermDate %><br>
-    <%= f.date_select :childTermDate %>
-  </div>
-  <div class="field">
-    <%= f.label :dateOfService %><br>
-    <%= f.date_select :dateOfService %>
+    <%= f.label "Attendance Date" %><br>
+    <%= f.date_field :dateOfService %>
   </div>
   <div class="field">
     <%= f.label :timeIn %><br>
-    <%= f.datetime_select :timeIn %>
+    <%= f.time_select :timeIn %>
   </div>
   <div class="field">
     <%= f.label :timeOut %><br>
-    <%= f.datetime_select :timeOut %>
+    <%= f.time_select :timeOut %>
   </div>
   <div class="field">
     <%= f.label :absent %><br>
     <%= f.select :absent, options_for_select(absence_reasons, @attendance.absent) %>
   </div>
   <div class="field">
-    <%= f.label :whoCreated %><br>
+    <%= f.label "Created by" %><br>
     <%= f.text_field :whoCreated %>
   </div>
+ 
   <div class="field">
-    <%= f.label :dateCreated %><br>
-    <%= f.date_select :dateCreated %>
-  </div>
-  <div class="field">
-    <%= f.label :whoEdited %><br>
+    <%= f.label "Edited by" %><br>
     <%= f.text_field :whoEdited %>
   </div>
-  <div class="field">
-    <%= f.label :dateEdited %><br>
-    <%= f.date_select :dateEdited %>
-  </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

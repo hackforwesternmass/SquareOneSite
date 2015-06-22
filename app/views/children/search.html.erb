@@ -1,0 +1,20 @@
+<p></p>
+<h3>Search by Child:</h3>
+
+
+ 
+<p>
+<%= form_tag(search_results_children_path, :method => "get", id: "search") do %>
+<p> Choose a child:    
+     <%= select_tag :child_id, options_for_select(Child.order('lName').all.collect{|a| [a.lName + ", " + a.fName , a.id]}), { :prompt => 'All' }  %> 
+    </p>
+    <p> Attendance Dates From: 
+     <%= date_field_tag :fromDate, value: Date.today.to_s(:db)  %>
+        To: 
+     <%= date_field_tag :toDate, value: Date.today.strftime("%m/%d/%Y")  %></p>
+<p><%= submit_tag "Search" %> </p>
+<% end %>
+</p>
+
+
+</p>

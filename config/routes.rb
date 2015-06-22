@@ -6,15 +6,22 @@ Rails.application.routes.draw do
   resources :static_pages
   
   resources :providers do
+    get 'search', on: :collection
+    get 'search_results', on: :collection
+
     resources :children do
       get 'showProviderChildren', on: :collection
       get 'recordAttendance', on: :collection
       post 'recordAttendance', on: :collection
+
       resources :attendances
     end
   end
   
-
+  resources :children do
+      get 'search', on: :collection
+      get 'search_results', on: :collection
+  end
   
   get 'static_pages/index'
 

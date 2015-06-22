@@ -5,8 +5,31 @@ class ChildrenController < ApplicationController
   # GET /children.json
   def index
     @children = Child.order('lName').all
-   # @providers = Providers.order('lName').all
   end
+
+  # GET /search
+  def search
+  
+  end
+  
+  # GET /search_results
+  def search_results 
+   child_id = params[:child_id]
+   @fromDate = params[:fromDate]
+   @toDate = params[:toDate]
+   if @fromDate == ""
+     @fromDate = Date.current
+   end
+   
+   if @toDate == "" || @toDate == nil
+     @toDate = Date.current
+   end
+   @results = Child.search(child_id)
+   if child_id.present?
+     @child = Child.find(child_id)
+   end
+  end
+  
 
 # Added this new controller and route showProviderChildren, URL: providers/1/children/showProviderChildren/
 def showProviderChildren
@@ -20,6 +43,9 @@ end
 def recordAttendance
    @provider = Provider.find(params[:provider_id])
    @children = @provider.children.order('lName')
+   @date = params[:date] 
+   @date = Date.parse("#{params[:date]['day']}-#{params[:date]['month']}-#{params[:date]['year']}") if params[:date]
+   @date ||= Date.current
 end
 
   # GET /children/1

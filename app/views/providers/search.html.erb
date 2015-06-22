@@ -1,0 +1,19 @@
+<p></p>
+<h3>Search:</h3>
+<p>
+<%= form_tag(search_results_providers_path, :method => "get", id: "search") do %>
+Choose a care provider:    
+     <%= select_tag :provider_id, options_for_select(Provider.order('lName').all.collect{|a| [a.lName + ", " + a.fName , a.id]}), { :prompt => 'All' }  %> 
+
+
+<%= submit_tag "Search" %>
+<% end %>
+</p>
+
+<p>
+<% if @results.present? %>
+ <%= render 'form' %>
+<% else %>
+  <p>There are no results containing the term(s) <%= params[:provider_id] %>.</p>
+<% end %>
+</p>
