@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #root 'providers#index'
 
   resources :static_pages
-  
+
   resources :providers do
     get 'search', on: :collection
     get 'search_results', on: :collection
@@ -21,6 +21,14 @@ Rails.application.routes.draw do
   resources :children do
       get 'search', on: :collection
       get 'search_results', on: :collection
+  end
+  
+  resources :admin do
+    get 'providers', on: :collection
+    get 'children', on: :collection
+    get 'search', on: :collection
+    get 'attendance', on: :collection
+    get 'attendance_results', on: :collection
   end
   
   get 'static_pages/index'

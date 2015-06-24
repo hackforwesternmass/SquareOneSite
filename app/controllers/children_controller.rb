@@ -71,10 +71,8 @@ end
 
   # GET /children/new
   def new
-    @provider = Provider.find(params[:provider_id])
+    @provider = Provider.find(params[:provider_id]) if params[:provider_id]
     @child = Child.new
-   # @child.provider_id = @provider
- 
   end
 
   # GET /children/1/edit
