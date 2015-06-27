@@ -30,11 +30,11 @@
   </div>
   <div class="field">
     <%= f.label :timeIn %><br>
-    <%= f.time_select :timeIn %>
+    <%= f.time_select :timeIn, {ampm: true} %>
   </div>
   <div class="field">
     <%= f.label :timeOut %><br>
-    <%= f.time_select :timeOut %>
+    <%= f.time_select :timeOut, {ampm: true} %>
   </div>
   <div class="field">
     <%= f.label :absent %><br>

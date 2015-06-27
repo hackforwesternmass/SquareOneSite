@@ -28,14 +28,18 @@
       <th>Termination Date</th>   
       <th>Provider</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     
-    <div class="button">
-  <%= link_to 'Add Child', new_child_path %>
-  </div>
+  
+   
+<div class="button">
+<%= link_to 'Add Child', @new_path %></div>
+
+
   
     <% @children.each do |child| %>
       <tr>
@@ -48,8 +52,9 @@
         <td><%= child.startDate.strftime("%m/%d/%Y") %></td>
          <td><%= child.terminationDate %></td>
         <td><%= child.provider.fName %> <%= child.provider.lName %></td>
-        <td><%= link_to 'See/Edit Attendance', provider_child_path(child.provider, child) %> 
-        <%= link_to 'Edit Child', edit_provider_child_path(child.provider, child) %> 
+        <td><%= link_to 'Attendance This Week',  recordAttendance_provider_children_path(child.provider_id)   %> 
+        </td>
+       <td> <%= link_to 'Edit Child', edit_provider_child_path(child.provider, child) %> 
         <%= link_to 'Delete', provider_child_path(child.provider, child), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

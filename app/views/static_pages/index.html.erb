@@ -9,9 +9,9 @@ either in the Report Attendance page if they are a child care provider or in the
 <ul>
     (These links are also available in the navigation menu above. Links assume provider 1 has logged in.)
     <li><%= link_to 'Report Attendance', recordAttendance_provider_children_path(1) %> </li>
-    <li> <%= link_to 'Edit Children', showProviderChildren_provider_children_path(1) %> (for provider 1) </li>
-    <li>Request Time Off (not yet implemented)</li>
-    <li>Request Subcare (not yet implemened)</li>
+    <li> <%= link_to 'Edit Children', provider_children_path(1) %> (for provider 1) </li>
+    <li> <%= link_to 'Request Time Off', provider_time_offs_path(1) %></li>
+    <li>Request Subcare (not yet implemented)</li>
     <li><%= link_to 'My Info', edit_provider_path(1) %></li>
     <li>Log Off</li>
 </ul>
@@ -24,6 +24,7 @@ either in the Report Attendance page if they are a child care provider or in the
     <li> <%= link_to 'Add New Provider', new_provider_path %>  </li>
     <li> <%= link_to 'View/Edit all Children', children_path %> </li>
     <li> <%= link_to 'Add New Child', new_child_path %> </li>
+        <li> <%= link_to 'View/Edit Time Off Requests', time_offs_path %> </li>
     <li> <%= link_to 'View Weekly Attendance by Provider', attendance_admin_index_path %> </li>
      <li> <%= link_to 'Search by Provider and Date Range', search_providers_path %> </li>
     <li> <%= link_to 'Search by Child and Date Range', search_children_path %> </li>

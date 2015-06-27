@@ -50,9 +50,8 @@
         <td><%= provider.licenseExpDate.strftime("%m/%d/%Y") %></td>
         <td><%= provider.certLevel %></td>
         <td><%= provider.sqOneRepl %></td>
-        <td><%= link_to 'Add Attendance Record', showProviderChildren_provider_children_path(provider) %> </td>
+        <td><%= link_to 'View Children', provider_children_path(provider) %> </td>
         <td>
-        <%= link_to 'Show', provider %>
         <%= link_to 'Edit', edit_provider_path(provider) %>
         <%= link_to 'Delete', provider, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>

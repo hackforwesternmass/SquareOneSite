@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @time_off.startDate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @time_off.endDate %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @time_off.approved %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @time_off.comments %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @time_off.provider %>
+</p>
+
+<%= link_to 'Edit', edit_time_off_path(@time_off) %> |
+<%= link_to 'Back', :back %>

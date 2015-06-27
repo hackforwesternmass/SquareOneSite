@@ -59,8 +59,8 @@
 <% attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.dateOfService.strftime("%m/%d/%Y") %></td>
-        <td><%= attendance.timeIn.to_s(:time) %></td>
-        <td><%= attendance.timeOut.to_s(:time) %></td>
+        <td><%= attendance.timeIn.strftime("%I:%M %p") %></td>
+        <td><%= attendance.timeOut.strftime("%I:%M %p") %></td>
         <td><%= attendance.absent %></td>
         <td><%= attendance.whoCreated %></td>
         <td><%= attendance.created_at.strftime("%m/%d/%Y") %></td>

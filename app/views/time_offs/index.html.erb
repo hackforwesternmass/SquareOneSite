@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>&nbsp;</p>
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+    } 
+); 
+</script>
+<h2>Time Off Requests
+<% if @provider != nil %>
+    for  <%= @provider.fName %> <%= @provider.lName %>
+    <% end %>
+    </h2>
+    
+   
+   <div class="button">
+     <%= link_to 'New Request', @new_path %></div>
+  
+
+  
+<table border id="resultsTable" class="tablesorter">
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Approved</th>
+      <th>Comments</th>
+      <th>Provider</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @time_offs.each do |time_off| %>
+      <tr>
+        <td><%= time_off.startDate.strftime("%m/%d/%Y") %></td>
+        <td><%= time_off.endDate.strftime("%m/%d/%Y") %></td>
+        <td><%= time_off.approved %></td>
+        <td><%= time_off.comments %></td>
+        <td><%= time_off.provider.fName %> <%= time_off.provider.lName %></td>
+    
+        <td><%= link_to 'Edit', edit_provider_time_off_path(time_off.provider, time_off) %></td>
+        <td><%= link_to 'Delete', time_off, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

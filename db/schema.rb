@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622204849) do
+ActiveRecord::Schema.define(version: 20150626202023) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "child_id"
@@ -68,5 +68,17 @@ ActiveRecord::Schema.define(version: 20150622204849) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  create_table "time_offs", force: :cascade do |t|
+    t.date     "startDate"
+    t.date     "endDate"
+    t.string   "approved"
+    t.string   "comments"
+    t.integer  "provider_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "time_offs", ["provider_id"], name: "index_time_offs_on_provider_id"
 
 end

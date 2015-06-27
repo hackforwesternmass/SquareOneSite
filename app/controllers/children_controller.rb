@@ -1,10 +1,19 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
-  # GET /children
+  # GET /children or /provider/id/children
   # GET /children.json
   def index
-    @children = Child.order('lName').all
+    if params[:provider_id] != nil
+      # for specific provider view
+       @provider = Provider.find(params[:provider_id])
+       @children = @provider.children.order('lName')
+       @new_path = new_provider_child_path(@provider)
+    else
+         # for admin view, no specific provider, show all
+       @children = Child.order('lName').all
+       @new_path = new_child_path
+    end
   end
 
   # borrowed from http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
@@ -47,12 +56,7 @@ class ChildrenController < ApplicationController
   end
   
 
-# Added this new controller and route showProviderChildren, URL: providers/1/children/showProviderChildren/
-def showProviderChildren
-   @provider = Provider.find(params[:provider_id])
-   @children = @provider.children.order('lName')
-   render :index
-end
+
 
 # Added this new controller and route for recordAttendance, URL: providers/1/children/recordAttendance
 # Can this really handle GET, POST, and PATCH?

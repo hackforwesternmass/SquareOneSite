@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :time_offs
   root 'static_pages#index'
   #root 'providers#index'
 
@@ -8,9 +9,9 @@ Rails.application.routes.draw do
   resources :providers do
     get 'search', on: :collection
     get 'search_results', on: :collection
+    resources :time_offs
 
     resources :children do
-      get 'showProviderChildren', on: :collection
       get 'recordAttendance', on: :collection
       post 'recordAttendance', on: :collection
 

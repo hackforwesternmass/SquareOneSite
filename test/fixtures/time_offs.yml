@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startDate: 2015-06-26
+  endDate: 2015-06-26
+  approved: MyString
+  comments: MyString
+  provider_id: 
+
+two:
+  startDate: 2015-06-26
+  endDate: 2015-06-26
+  approved: MyString
+  comments: MyString
+  provider_id: 
