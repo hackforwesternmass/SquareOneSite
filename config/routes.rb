@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :children do
       get 'recordAttendance', on: :collection
       post 'recordAttendance', on: :collection
-
+      get 'dailyAttendance', on: :collection
       resources :attendances
     end
   end
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'search', on: :collection
     get 'attendance', on: :collection
     get 'attendance_results', on: :collection
+    get 'daily_attendance_results', on: :collection
   end
   
   get 'static_pages/index'

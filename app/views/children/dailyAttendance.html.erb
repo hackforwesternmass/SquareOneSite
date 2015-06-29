@@ -1,0 +1,119 @@
+<p id="notice"> <%= notice %></p>
+<style>
+  .content { margin: 10px, 10px;
+             width: 100%;
+  }
+</style>
+
+<script>
+  $(document).ready(function() 
+    { 
+        $("#resultsTable").tablesorter(); 
+        $( "#datepicker" ).datepicker({ dateFormat: 'mm/dd/yy' });
+    } 
+); 
+</script>
+
+<% 
+ now = @date
+ nowStr = @dateStr
+ absence_reasons = ["1 - Present", "A - Unexcused", "E1 - Child on Vacation", "E2 - Mom in Hospital", "E3 - Child in Hospital", "E4 - Child Sick (not hospitalized)", "E5 - Child in Subcare", "E6 - Parent Refused Subcare", "E7 - Intervention", "E8 - Child Doctor Appointment", "C1 - Holiday Closure", "C2 - No Square One Transportation", "C3 - Weather Closure", "C4 - Provider on Holiday", "C5 - Professional Day"] 
+%>
+
+
+<p>&nbsp;</p>
+<h3>Daily Attendance for <%= nowStr %> for Child Care Provider <em> <%= @provider.fName %> <%= @provider.lName %> </em> <br>
+  </h3>
+   
+ 
+  <%= form_tag dailyAttendance_provider_children_path(@provider.id), method: "get" do %>
+    Change Date:  
+     <%= text_field_tag :date,  nowStr, id: 'datepicker' %><%= submit_tag("Submit") %>
+    <% end %>
+    
+
+
+    
+<p><h4> <%= nowStr %></h4> 
+ <table border id="resultsTable" class="tablesorter">
+        <thead>
+             <tr><th>Child Name</th><th>DOB</th><th>Age</th><th>Funding</th>
+             <th>TimeIn</th><th>TimeOut</th><th>Absence</th><th>Created/Edited by</th>
+ <th></th></tr>
+        </thead>
+  <tbody>
+      
+    <% @children.each do |child| 
+        unless child.terminationDate? 
+        %>
+      <tr>  
+         <td> <%= child.fName %>  <%= child.middle %>  <%= child.lName %> <br>
+         <%= link_to "Edit Child", edit_provider_child_path(child.provider, child) %> </td>
+         <td><%= child.dob.strftime("%m/%d/%Y") %></td>
+         <td> <%= ageInYears(child.dob) %> yr <%= ageMonthRemainder(child.dob) %> mo. </td>
+        <td><%= child.fundSrc %></td>
+        
+        <%
+      # pull out today's attendance if already entered. Date has to be in yyyy-mm-dd format 
+        attendance = child.attendances.where(dateOfService: now).first
+         if attendance != nil # attendance found, print it out with Edit link
+         %>
+        <td><%= attendance.timeIn.strftime("%I:%M %p") %></td>
+        <td><%= attendance.timeOut.strftime("%I:%M %p") %></td>
+        <td><%= attendance.absent %></td>
+        <td><%= attendance.whoCreated %> <br>
+        <%= attendance.created_at.strftime("%m/%d/%Y") %></td>
+        <td><%= link_to 'Edit Attendance',  edit_provider_child_attendance_path(child.provider, child, attendance) %> </td>
+    </tr>
+    
+        <% else 
+             # if no attendance found, generate a blank new one
+            newAttendance = true
+            attendance = child.attendances.new 
+            attendance.timeIn = now.beginning_of_day
+            attendance.timeOut = now.beginning_of_day
+          %>
+          <%= form_for [@provider, child, attendance] do |f|          %>
+       <td>      <%= f.hidden_field :provider_id, value:@provider.id %>
+                  <%= f.hidden_field :dateOfService, value: now.strftime("%Y-%m-%d")  %>
+                
+                <div class="field">
+                  <%= f.time_select :timeIn, {ampm: true}%>
+                </div>
+                </td>
+                <td>
+                <div class="field">
+                  <%= f.time_select :timeOut, {ampm: true} %>
+                </div>
+                </td>
+    <td>           <div class="field">
+                  <%= f.select :absent, options_for_select(absence_reasons, attendance.absent) %>
+                </div></td>
+                
+        </td>
+        <td>
+                <div class="field">
+                  <%= f.text_field :whoCreated %>
+                </div>
+                
+            </td> 
+            <td>
+                <div class="actions">
+                  <%= f.submit "Submit Attendance"%>
+                </div> </td>
+           </tr>
+        <% end %>   
+     <% end %>
+    <% end %>
+<% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+

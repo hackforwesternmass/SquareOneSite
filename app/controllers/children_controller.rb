@@ -68,6 +68,19 @@ def recordAttendance
    @date ||= Date.current
 end
 
+# GET providers/id/children/dailyAtendance
+def dailyAttendance
+   @provider = Provider.find(params[:provider_id])
+   @children = @provider.children.order('lName')
+   if params[:date] != nil
+      @date = Date::strptime(params[:date],"%m/%d/%Y")
+      @dateStr = @date.strftime("%m/%d/%y") 
+   else 
+        @date = Date.current
+        @dateStr = Date.current.strftime("%m/%d/%y")
+   end
+end
+
   # GET /children/1
   # GET /children/1.json
   def show

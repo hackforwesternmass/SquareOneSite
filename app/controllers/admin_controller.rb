@@ -20,6 +20,12 @@ class AdminController < ApplicationController
         redirect_to recordAttendance_provider_children_path(provider_id)
      end
      
+      # GET admin/daily_attendance_results, get id and redirect to providers/id/children/recordAttendance.html.erb
+     def daily_attendance_results
+        provider_id = params[:provider_id]
+        redirect_to dailyAttendance_provider_children_path(provider_id)
+     end
+     
      # GET admin/providers goes to /providers, not using
      def providers
        @providers = Provider.order('lName').all
