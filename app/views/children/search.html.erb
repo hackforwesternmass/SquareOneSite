@@ -9,9 +9,9 @@
      <%= select_tag :child_id, options_for_select(Child.order('lName').all.collect{|a| [a.lName + ", " + a.fName , a.id]}), { :prompt => 'All' }  %> 
     </p>
     <p> Attendance Dates From: 
-     <%= date_field_tag :fromDate, value: Date.today.to_s(:db)  %>
+     <%= date_field_tag :fromDate,  Date.current.strftime("%m/%d/%Y")  %>
         To: 
-     <%= date_field_tag :toDate, value: Date.today.strftime("%m/%d/%Y")  %></p>
+     <%= date_field_tag :toDate,  Date.current.strftime("%m/%d/%Y")  %></p>
 <p><%= submit_tag "Search" %> </p>
 <% end %>
 </p>

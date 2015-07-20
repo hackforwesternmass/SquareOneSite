@@ -1,3 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<script>
+  $( document ).ready(function() {
+       $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',  changeMonth: true,
+      changeYear: true });
+  });
+  </script>
+  
 <%= form_for(@provider) do |f| %>
   <% if @provider.errors.any? %>
     <div id="error_explanation">
@@ -61,7 +70,7 @@
   </div>
   <div class="field">
     <%= f.label( :licenseExpDate, "License Expiration Date: ") %><br>
-    <%= f.date_field :licenseExpDate %>
+    <%= f.text_field :licenseExpDate,     id: 'datepicker1' %>
   </div>
   <div class="field">
     <%= f.label( :certLevel, "Certification Level: ") %><br>

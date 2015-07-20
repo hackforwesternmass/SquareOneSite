@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<script>
+  $( document ).ready(function() {
+       $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd',  changeMonth: true,
+      changeYear: true });
+         $( "#datepicker2" ).datepicker({ dateFormat: 'yy-mm-dd',  changeMonth: true,
+      changeYear: true });
+           $( "#datepicker3" ).datepicker({ dateFormat: 'yy-mm-dd',  changeMonth: true,
+      changeYear: true });
+  });
+  </script>
+  
 <%= form_for [@provider, @child] do |f| %>
   <% if @child.errors.any? %>
     <div id="error_explanation">
@@ -32,7 +43,7 @@
   </div>
   <div class="field">
     <%= f.label( :dob, "Date of Birth: ") %><br>
-    <%= f.date_field :dob %>
+    <%= f.text_field :dob,     id: 'datepicker1' %>
   </div>
   <div class="field">
     <%= f.label(:fundSrc, "Funding Source: ") %><br>
@@ -44,11 +55,11 @@
   </div>
   <div class="field">
     <%= f.label( :startDate, "Start Date") %><br>
-    <%= f.date_field :startDate %>
+    <%= f.text_field :startDate,    id: 'datepicker2' %>
   </div>
   <div class="field">
     <%= f.label( :terminationDate, "Termination Date") %><br>
-    <%= f.date_field :terminationDate %>
+    <%= f.text_field :terminationDate,    id: 'datepicker3' %>
   </div>
   <div class="field">
     <%= f.label :provider_id %><br>

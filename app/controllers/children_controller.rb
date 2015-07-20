@@ -37,21 +37,26 @@ class ChildrenController < ApplicationController
   # GET /search_results
   def search_results 
    child_id = params[:child_id]
-   @fromDate = params[:fromDate]
-   @toDate = params[:toDate]
-   if @fromDate == ""
-     @fromDate = Date.current
-   end
-   
-   if @toDate == "" 
-     @toDate = Date.current
-   end
-   
    if child_id.present?
        @results = [Child.find(child_id)]
        @child = Child.find(child_id)
-   else
+   else # find all
        @results =  Child.all.order('lName')
+   end
+   
+   if params[:fromDate] != nil
+        @fromDate = Date::strptime(params[:fromDate], "%m/%d/%Y")
+        @fromDateStr = @fromDate.strftime("%m/%d/%y")
+   else 
+        @fromDate = Date.current
+        @fromDateStr = Date.current.strftime("%m/%d/%y")
+   end
+   if params[:toDate] != nil
+       @toDate = Date::strptime(params[:toDate], "%m/%d/%Y")
+       @toDateStr = @toDate.strftime("%m/%d/%y")
+   else
+     @toDate = Date.current
+     @toDateStr = Date.current.strftime("%m/%d/%y")
    end
   end
   

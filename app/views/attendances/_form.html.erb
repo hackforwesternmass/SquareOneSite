@@ -1,3 +1,9 @@
+  <script>
+  $( document ).ready(function() {
+       $( "#datepicker1" ).datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  </script>
+  
 <%= form_for [@provider, @child, @attendance] do |f|  %>
   <% if @attendance.errors.any? %>
     <div id="error_explanation">
@@ -26,7 +32,7 @@
  
   <div class="field">
     <%= f.label "Attendance Date" %><br>
-    <%= f.date_field :dateOfService %>
+    <%= f.text_field :dateOfService,    id: 'datepicker1' %>
   </div>
   <div class="field">
     <%= f.label :timeIn %><br>
