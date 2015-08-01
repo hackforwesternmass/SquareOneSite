@@ -14,7 +14,7 @@
  *= require_self
  */
  
- @import "nav_style";
+ /* @import "nav_style"; */
  @import "sortable_table_style";
  
  body {
