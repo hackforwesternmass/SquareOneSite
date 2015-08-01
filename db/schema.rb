@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150626202023) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attendances", force: :cascade do |t|
     t.integer  "child_id"
     t.integer  "provider_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20150626202023) do
     t.string   "absenceReason"
   end
 
-  add_index "attendances", ["child_id"], name: "index_attendances_on_child_id"
-  add_index "attendances", ["provider_id"], name: "index_attendances_on_provider_id"
+  add_index "attendances", ["child_id"], name: "index_attendances_on_child_id", using: :btree
+  add_index "attendances", ["provider_id"], name: "index_attendances_on_provider_id", using: :btree
 
   create_table "children", force: :cascade do |t|
     t.string   "fName"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150626202023) do
     t.date     "terminationDate"
   end
 
-  add_index "children", ["provider_id"], name: "index_children_on_provider_id"
+  add_index "children", ["provider_id"], name: "index_children_on_provider_id", using: :btree
 
   create_table "providers", force: :cascade do |t|
     t.string   "fName"
@@ -79,6 +82,10 @@ ActiveRecord::Schema.define(version: 20150626202023) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "time_offs", ["provider_id"], name: "index_time_offs_on_provider_id"
+  add_index "time_offs", ["provider_id"], name: "index_time_offs_on_provider_id", using: :btree
 
+  add_foreign_key "attendances", "children"
+  add_foreign_key "attendances", "providers"
+  add_foreign_key "children", "providers"
+  add_foreign_key "time_offs", "providers"
 end
