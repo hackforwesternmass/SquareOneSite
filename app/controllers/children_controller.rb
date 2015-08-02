@@ -103,13 +103,16 @@ end
  
   end
 
-  # POST /children
+  # POST /children (after form is filled out)
   # POST /children.json
   def create
-    @provider = Provider.find(params[:provider_id])
-    @child = @provider.children.create(child_params)
-   # @child = Child.new(child_params)
-
+    if params[:provider_id]
+       @provider = Provider.find(params[:provider_id]) 
+       @child = @provider.children.create(child_params)
+    else
+       @child = Child.new(child_params)
+    end
+    
     respond_to do |format|
       if @child.save
         format.html { redirect_to :back, notice: 'Child was successfully created.' }
