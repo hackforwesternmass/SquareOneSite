@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626202023) do
+ActiveRecord::Schema.define(version: 20150802204420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20150626202023) do
   add_index "children", ["provider_id"], name: "index_children_on_provider_id", using: :btree
 
   create_table "providers", force: :cascade do |t|
-    t.string   "fName"
+    t.string   "fname"
     t.string   "middle"
-    t.string   "lName"
+    t.string   "lname"
     t.string   "addr1"
     t.string   "addr2"
     t.string   "city"
