@@ -28,13 +28,13 @@ class AdminController < ApplicationController
      
      # GET admin/providers goes to /providers, not using
      def providers
-       @providers = Provider.order("lName").all
+       @providers = Provider.order('"lName"').all
        render "providers/index"
      end
  
      # GET admin/children goes to /children, not using
      def children
-        @children = Child.order("lName").all
+        @children = Child.order('"lName"').all
         render "children/index"
      end
 end

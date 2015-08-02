@@ -7,11 +7,11 @@ class ChildrenController < ApplicationController
     if params[:provider_id] != nil
       # for specific provider view
        @provider = Provider.find(params[:provider_id])
-       @children = @provider.children.order('lName')
+       @children = @provider.children.order('"lName"')
        @new_path = new_provider_child_path(@provider)
     else
          # for admin view, no specific provider, show all
-       @children = Child.order('lName').all
+       @children = Child.order('"lName"').all
        @new_path = new_child_path
     end
   end
@@ -41,7 +41,7 @@ class ChildrenController < ApplicationController
        @results = [Child.find(child_id)]
        @child = Child.find(child_id)
    else # find all
-       @results =  Child.all.order('lName')
+       @results =  Child.all.order('"lName"')
    end
    
    if params[:fromDate] != nil
@@ -67,7 +67,7 @@ class ChildrenController < ApplicationController
 # Can this really handle GET, POST, and PATCH?
 def recordAttendance
    @provider = Provider.find(params[:provider_id])
-   @children = @provider.children.order('lName')
+   @children = @provider.children.order('"lName"')
    @date = params[:date] 
    @date = Date.parse("#{params[:date]['day']}-#{params[:date]['month']}-#{params[:date]['year']}") if params[:date]
    @date ||= Date.current
@@ -76,7 +76,7 @@ end
 # GET providers/id/children/dailyAtendance
 def dailyAttendance
    @provider = Provider.find(params[:provider_id])
-   @children = @provider.children.order('lName')
+   @children = @provider.children.order('"lName"')
    if params[:date] != nil
       @date = Date::strptime(params[:date],"%m/%d/%Y")
       @dateStr = @date.strftime("%m/%d/%y") 
