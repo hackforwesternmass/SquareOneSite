@@ -7,11 +7,11 @@ class TimeOffsController < ApplicationController
     if params[:provider_id] != nil
       # for specific provider view
        @provider = Provider.find(params[:provider_id])
-       @time_offs = @provider.time_offs.order('startDate')
+       @time_offs = @provider.time_offs.order('"startDate"')
        @new_path = new_provider_time_off_path(@provider)
      else
        # for admin view, no specific provider, show all
-       @time_offs = TimeOff.order('startDate').all
+       @time_offs = TimeOff.order('"startDate"').all
        @new_path = new_time_off_path 
     end
   end

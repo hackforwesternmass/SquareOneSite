@@ -43,14 +43,14 @@
  </thead>
    <tbody>
  
-  <% provider.children.order('lName').each do |child| %>     
+  <% provider.children.order('"lName"').each do |child| %>     
    
 <br><% # pull out each attendance (SQL WHERE BETWEEN) in the fromDate to toDate range. Date has to be in yyyy-mm-dd format 
         attendances = child.attendances.where(dateOfService: @fromDate .. @toDate) 
 %>
 
 
-<% attendances.order('dateOfService').each do |attendance| %>
+<% attendances.order('"dateOfService"').each do |attendance| %>
   
       <tr>
          <td> <%= child.fName %>  <%= child.middle %>  <%= child.lName %> <br>
