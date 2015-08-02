@@ -30,14 +30,14 @@ class ProvidersController < ApplicationController
      @provider = Provider.find(provider_id)
      @results = [Provider.find(provider_id)]
    else # find all
-     @results = Provider.order('lName').all
+     @results = Provider.order("lName").all
    end
   end
   
   # GET /providers
   # GET /providers.json
   def index
-    @providers = Provider.order('lName').all
+    @providers = Provider.order("lName").all
   end
 
   # GET /providers/1
